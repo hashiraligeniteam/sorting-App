@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager 
 {
-    public static GameManager _Instance;
+    private static GameManager _Instance;
     public int LevelNo;
     public float score;
     
@@ -18,7 +18,6 @@ public class GameManager
             }
             return _Instance;
         }
-        
     }
-
+    
 }

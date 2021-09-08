@@ -13,7 +13,7 @@ public class AppAttriutes : MonoBehaviour
 
     public Text nameText;
 
-    private void Start()
+    public void ShowText()
     {
         nameText.text = AppName;
     }

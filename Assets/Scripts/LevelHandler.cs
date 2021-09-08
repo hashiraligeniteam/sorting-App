@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ScoreState
+{
+    None,
+    Name,
+    Color,
+    Category,
+    Creator
+}
 
 [System.Serializable]
 public class AppsAttributes 
@@ -24,6 +32,7 @@ public class Levels
     public bool MakeFolder;
     public int row;
     public int col;
+    public ScoreState[] scoreSequence;
 }
 public class LevelHandler : MonoBehaviour
 {
