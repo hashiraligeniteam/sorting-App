@@ -10,9 +10,9 @@ public class AppAttriutes : MonoBehaviour
     public string AppCatagory;
     public string Creator;
     public string AppName;
-
     public Text nameText;
 
+   
     public void ShowText()
     {
         nameText.text = AppName;

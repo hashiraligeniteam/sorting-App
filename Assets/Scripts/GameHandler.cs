@@ -1,19 +1,40 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
-    public bool Dargging = false;
+    [Header ("Apps List")]
     public List<GameObject> Apps;
+    [Header("Phone Object")]
     public GameObject AppsMainParent;
+    [HideInInspector]
     public Vector3 finalAppPosition;
+    [Header("Score")]
     public float addScore = 1f;
     public float subScore = 0.5f;
     public Text scoreText;
+
+    [Header("Prefab")]
+    public GameObject folderPrefab;
+
+
+    [Header("Grid Layout Multiplier")]
+    public float GridMultiplier;
+
+    public GameObject OpenFolderRef;
+    public GameObject FolderScreen;
+
+    [Header("Inside Folder List")]
+    public List<GameObject> InsideFolderApps;
+    public GameObject currentFolderGridClosed;
+
+    public bool appBeingused;
 
     private void Awake()
     {
@@ -42,6 +63,7 @@ public class GameHandler : MonoBehaviour
             if (app != clickedApp || app != collidedApp)
             {
                 app.GetComponent<BoxCollider2D>().enabled = false;
+                app.GetComponentInChildren<BoxCollider2D>().enabled = false;
             }
         }
     }
@@ -50,30 +72,84 @@ public class GameHandler : MonoBehaviour
         foreach (GameObject app in Apps)
         {
             app.GetComponent<BoxCollider2D>().enabled = true;
+            app.GetComponentInChildren<BoxCollider2D>().enabled = true;
         }
     }
 
     public void UpdateChildList(GameObject DrageObject, GameObject ColliedObject) 
     {
-        ColliedObjectindex =  Apps.IndexOf(ColliedObject);
-        DrageObjectIndex = Apps.IndexOf(DrageObject);
+        Debug.Log(ColliedObject.name + " Name ");
+        if (ColliedObject.GetComponent<TriggerCheck>().InsideFolder)
+        {
+            ColliedObjectindex = InsideFolderApps.IndexOf(ColliedObject);
+            DrageObjectIndex = InsideFolderApps.IndexOf(DrageObject);
+        }
+        else
+        {
+            ColliedObjectindex = Apps.IndexOf(ColliedObject);
+            DrageObjectIndex = Apps.IndexOf(DrageObject);
+        }
         ColliedObject.transform.SetSiblingIndex(DrageObjectIndex);
         DrageObject.transform.SetSiblingIndex(ColliedObjectindex);
 
         finalAppPosition = ColliedObject.transform.localPosition;
         
-        UpdateListIndex();
+        UpdateListIndex(false);
     }
-    public void UpdateListIndex()
+    public void UpdateListIndex(bool InsideFolder)
     {
-        Apps.Clear();
-        for (int i=0;i<AppsMainParent.transform.childCount;i++)
+        if (InsideFolder)
         {
-            Apps.Add(AppsMainParent.transform.GetChild(i).gameObject);
+            InsideFolderApps.Clear();
+            for (int i = 0; i < OpenFolderRef.transform.childCount; i++)
+            {
+
+                InsideFolderApps.Add(OpenFolderRef.transform.GetChild(i).gameObject);
+            }
+        }
+        else
+        {
+            Apps.Clear();
+            for (int i = 0; i < AppsMainParent.transform.childCount; i++)
+            {
+                Apps.Add(AppsMainParent.transform.GetChild(i).gameObject);
+            }
         }
         CheckScore();
     }
 
+    public void CreateFolder(GameObject collidedApp,GameObject draggedApp)
+    {
+        GameObject folder = Instantiate(folderPrefab, AppsMainParent.transform);
+        folder.transform.SetSiblingIndex(Apps.IndexOf(collidedApp));
+        collidedApp.SetActive(false);
+        draggedApp.SetActive(false);
+        Apps[Apps.IndexOf(collidedApp)] = folder;
+        Apps.Remove(draggedApp);
+
+        DisableTriggers(collidedApp);
+        DisableTriggers(draggedApp);
+
+        collidedApp.transform.SetParent(folder.GetComponentInChildren<GridLayoutGroup>().transform);
+        Destroy(collidedApp.GetComponent<UIDrag>());
+        draggedApp.transform.SetParent(folder.GetComponentInChildren<GridLayoutGroup>().transform);
+        Destroy(draggedApp.GetComponent<UIDrag>());
+        collidedApp.SetActive(true);
+        draggedApp.SetActive(true);
+        AssignGridSize(folder.GetComponentInChildren<GridLayoutGroup>(), true);
+    }
+
+    public void AddInFolder(GameObject app,GameObject folder)
+    {
+        Apps.Remove(app);
+        app.transform.SetParent(folder.GetComponent<TriggerCheck>().LayoutGroup.transform);
+        Destroy(app.GetComponent<UIDrag>());
+        DisableTriggers(app);
+        UpdateListIndex(true);
+    }
+
+    #region ScoreLogic
+    
     private void AddScore()
     {
         GameManager.Instance.score += addScore;
@@ -479,6 +555,44 @@ public class GameHandler : MonoBehaviour
                 DeductScore();
                 Debug.Log("ScoreDeducted");
             }
+        }
+    }
+    
+    #endregion
+    public void AssignGridSize(GridLayoutGroup Grid,bool folder) 
+    {
+        if (folder)
+        {
+            Grid.cellSize = new Vector2(Grid.cellSize.x / GridMultiplier, Grid.cellSize.y / GridMultiplier);
+            Grid.padding.left = ( Grid.padding.left / (int)GridMultiplier);
+            Grid.padding.top = (Grid.padding.top / (int)GridMultiplier);
+            Grid.spacing = new Vector2(Grid.spacing.x / GridMultiplier, Grid.spacing.y / GridMultiplier);
+        }
+        else 
+        {
+            Grid.cellSize = new Vector2(Grid.cellSize.x * GridMultiplier, Grid.cellSize.y * GridMultiplier);
+            Grid.padding.left = (Grid.padding.left * (int)GridMultiplier);
+            Grid.padding.top = (Grid.padding.top * (int)GridMultiplier);
+            Grid.spacing = new Vector2(Grid.spacing.x * GridMultiplier, Grid.spacing.y * GridMultiplier);
+        }
+    }
+    public void ActivateTriggers(GameObject Obj) 
+    {
+        Obj.GetComponent<Collider2D>().enabled = true;
+        Collider2D[] Col = Obj.GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D c in Col) 
+        {
+            c.enabled = true;
+        }
+    }
+
+    public void DisableTriggers(GameObject Obj)
+    {
+        Obj.GetComponent<Collider2D>().enabled = false;
+        BoxCollider2D[] Col = Obj.GetComponentsInChildren<BoxCollider2D>();
+        foreach (BoxCollider2D c in Col)
+        {
+            c.enabled = false;
         }
     }
 }

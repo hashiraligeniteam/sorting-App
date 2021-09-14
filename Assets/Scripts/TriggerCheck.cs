@@ -1,27 +1,79 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TriggerCheck : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public bool InsideFolder;
+    public bool Folder;
+    public bool ObjectDragged;
+    public GridLayoutGroup LayoutGroup;
+   
+    
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (GetComponent<UIDrag>().Drag == false && collision.gameObject.GetComponent<UIDrag>().Drag == true) 
+        if (other.GetComponent<UIDrag>() && GetComponent<UIDrag>())
         {
-            Debug.Log("****************************Here**************************  "+transform.GetComponent<AppAttriutes>().AppName);
-            GameHandler.Instance.UpdateChildList(collision.gameObject,this.gameObject);
-            StartCoroutine(OnOffOtherCollider(collision.gameObject));
-            
-            
+            if (GetComponent<UIDrag>().Drag == true)
+            {
+                ObjectDragged = true;
+            }
+
+            if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == false)
+            {
+                if (GetComponent<UIDrag>().pointerUp == true && !InsideFolder)
+                {
+                    //Create folder
+                    Debug.Log("Folder Creation");
+                    if (other.GetComponent<TriggerCheck>().Folder)
+                    {
+                        GameHandler.Instance.AddInFolder(gameObject,other.gameObject);
+                    }
+                    else
+                    {
+                        GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject);
+                    }
+
+                    
+
+                }
+
+                ObjectDragged = false;
+            }
         }
+        
     }
 
-    IEnumerator OnOffOtherCollider(GameObject other)
+    public void OnPointerUp() 
     {
-        GameHandler.Instance.DisableTriggers(this.gameObject, other);
-        other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        yield return new WaitForSeconds(0.4f);
-        other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        GameHandler.Instance.EnableTriggers();
+        if (Folder && GetComponent<UIDrag>().Drag == false) 
+        {
+            if (LayoutGroup) 
+            {
+                GameHandler.Instance.FolderScreen.SetActive(true);
+                int folderChildCount = LayoutGroup.transform.childCount;
+                for (int i=0;i<folderChildCount;i++)
+                {
+                    LayoutGroup.transform.GetChild(0).SetParent(GameHandler.Instance.OpenFolderRef.transform);
+                }
+                foreach (GameObject obj in GameHandler.Instance.Apps)
+                {
+                    GameHandler.Instance.DisableTriggers(obj);
+                }
+                GameHandler.Instance.InsideFolderApps.Clear();
+                for (int i = 0; i < GameHandler.Instance.OpenFolderRef.transform.childCount; i++)
+                {
+                    GameHandler.Instance.ActivateTriggers(GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject);
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<TriggerCheck>().InsideFolder = true;
+                    GameHandler.Instance.InsideFolderApps.Add(GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject);
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject.AddComponent<UIDrag>();
+                }
+
+                GameHandler.Instance.currentFolderGridClosed = LayoutGroup.gameObject;
+            }
+        }
     }
+  
 }

@@ -20,6 +20,7 @@ public class AppsAttributes
     public string CompanyName;
     public string AppColor;
     public string Catagory;
+   
 }
 
 
