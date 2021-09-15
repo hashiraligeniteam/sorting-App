@@ -46,7 +46,7 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
-        for (int i=0;i<AppsMainParent.transform.childCount;i++)
+        for (int i = 0; i < LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps.Length; i++)
         {
             AppsMainParent.transform.GetChild(i).GetComponent<AppAttriutes>().AppName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppName;
             AppsMainParent.transform.GetChild(i).GetComponent<AppAttriutes>().ColorName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppColor;
@@ -94,7 +94,7 @@ public class GameHandler : MonoBehaviour
 
         finalAppPosition = ColliedObject.transform.localPosition;
         
-        UpdateListIndex(false);
+        UpdateListIndex(ColliedObject.GetComponent<TriggerCheck>().InsideFolder);
     }
     public void UpdateListIndex(bool InsideFolder)
     {
@@ -115,10 +115,10 @@ public class GameHandler : MonoBehaviour
                 Apps.Add(AppsMainParent.transform.GetChild(i).gameObject);
             }
         }
-        CheckScore();
+        CheckScore(InsideFolder);
     }
 
-    public void CreateFolder(GameObject collidedApp,GameObject draggedApp)
+    public void CreateFolder(GameObject collidedApp,GameObject draggedApp, TriggerCheck tCheck)
     {
         GameObject folder = Instantiate(folderPrefab, AppsMainParent.transform);
         folder.transform.SetSiblingIndex(Apps.IndexOf(collidedApp));
@@ -137,6 +137,7 @@ public class GameHandler : MonoBehaviour
         collidedApp.SetActive(true);
         draggedApp.SetActive(true);
         AssignGridSize(folder.GetComponentInChildren<GridLayoutGroup>(), true);
+        tCheck.once = false;
     }
 
     public void AddInFolder(GameObject app,GameObject folder)
@@ -159,26 +160,41 @@ public class GameHandler : MonoBehaviour
 //        GameManager.Instance.score -= subScore;
     }
 
-    public void CheckScore()
+    public void CheckScore(bool insideFolder)
     {
-        for (int i = 0; i <Apps.Count; i++)
+        GameManager.Instance.score = 0;
+        List<GameObject> appList=new List<GameObject>();
+        if (insideFolder)
         {
-            foreach (ScoreState scoreState in LevelHandler.Instance._levels[GameManager.Instance.LevelNo].scoreSequence)
+            appList = InsideFolderApps;
+        }
+        else
+        {
+            appList = Apps;
+        }
+        
+        for (int i = 0; i < appList.Count; i++)
+        {
+            if (!appList[i].GetComponent<TriggerCheck>().Folder)
             {
-                switch (scoreState)
+                foreach (ScoreState scoreState in LevelHandler.Instance._levels[GameManager.Instance.LevelNo]
+                    .scoreSequence)
                 {
-                    case ScoreState.Name: 
-                        ScoreByName(i);
-                        break;
-                    case ScoreState.Color:
-                        ScoreByColor(i);
-                        break;
-                    case ScoreState.Category:
-                        ScoreByCategory(i);
-                        break;
-                    case ScoreState.Creator:
-                        ScoreByCreator(i);
-                        break;
+                    switch (scoreState)
+                    {
+                        case ScoreState.Name:
+                            ScoreByName(i, appList);
+                            break;
+                        case ScoreState.Color:
+                            ScoreByColor(i, appList);
+                            break;
+                        case ScoreState.Category:
+                            ScoreByCategory(i, appList);
+                            break;
+                        case ScoreState.Creator:
+                            ScoreByCreator(i, appList);
+                            break;
+                    }
                 }
             }
         }
@@ -186,9 +202,9 @@ public class GameHandler : MonoBehaviour
         scoreText.text = GameManager.Instance.score.ToString();
     }
 
-    public void ScoreByName(int index)
+    public void ScoreByName(int index,List<GameObject> appList)
     {
-        string currentColor = Apps[index].GetComponent<AppAttriutes>().AppName;
+        string currentColor = appList[index].GetComponent<AppAttriutes>().AppName;
         char[] currentTemp = currentColor.ToCharArray();
         Debug.Log("---------------------Current :" + currentColor);
         
@@ -196,9 +212,9 @@ public class GameHandler : MonoBehaviour
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextName = Apps[index - 1].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = nextName.ToCharArray();
-            Debug.Log("---------------------Previous :" + nextName);
+            string previousName = appList[index - 1].GetComponent<AppAttriutes>().AppName;
+            char[] nextTemp = previousName.ToCharArray();
+            Debug.Log("---------------------Previous :" + previousName);
 
             for (int i = 0; i < currentTemp.Length; i++)
             {
@@ -223,7 +239,7 @@ public class GameHandler : MonoBehaviour
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextName = Apps[index + 1].GetComponent<AppAttriutes>().AppName;
+            string nextName = appList[index + 1].GetComponent<AppAttriutes>().AppName;
             char[] nextTemp = nextName.ToCharArray();
             Debug.Log("---------------------Next :" + nextName);
 
@@ -249,9 +265,9 @@ public class GameHandler : MonoBehaviour
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextName = Apps[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = nextName.ToCharArray();
-            Debug.Log("---------------------Top :" + nextName);
+            string topName = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppName;
+            char[] nextTemp = topName.ToCharArray();
+            Debug.Log("---------------------Top :" + topName);
 
             for (int i = 0; i < currentTemp.Length; i++)
             {
@@ -273,11 +289,11 @@ public class GameHandler : MonoBehaviour
         }
         
         //Checking Bottom
-        if (index < (Apps.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
+        if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextName = Apps[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = nextName.ToCharArray();
-            Debug.Log("---------------------Bottom :" + nextName);
+            string bottomName = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppName;
+            char[] nextTemp = bottomName.ToCharArray();
+            Debug.Log("---------------------Bottom :" + bottomName);
 
             for (int i = 0; i < currentTemp.Length; i++)
             {
@@ -299,14 +315,14 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void ScoreByColor(int index)
+    public void ScoreByColor(int index,List<GameObject> appList)
     {
-        string currentColor = Apps[index].GetComponent<AppAttriutes>().ColorName;
+        string currentColor = appList[index].GetComponent<AppAttriutes>().ColorName;
         
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextColor = Apps[index - 1].GetComponent<AppAttriutes>().ColorName;
+            string nextColor = appList[index - 1].GetComponent<AppAttriutes>().ColorName;
             Debug.Log("---------------------Previous :" + nextColor);
 
             if (currentColor==nextColor)
@@ -326,7 +342,7 @@ public class GameHandler : MonoBehaviour
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextColor = Apps[index + 1].GetComponent<AppAttriutes>().ColorName;
+            string nextColor = appList[index + 1].GetComponent<AppAttriutes>().ColorName;
             char[] nextTemp = nextColor.ToCharArray();
             Debug.Log("---------------------Next :" + nextColor);
 
@@ -347,7 +363,7 @@ public class GameHandler : MonoBehaviour
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextColor = Apps[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().ColorName;
+            string nextColor = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().ColorName;
             Debug.Log("---------------------Top :" + nextColor);
 
             if (currentColor==nextColor)
@@ -365,9 +381,9 @@ public class GameHandler : MonoBehaviour
         }
         
         //Checking Bottom
-        if (index < (Apps.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
+        if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextColor = Apps[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().ColorName;
+            string nextColor = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().ColorName;
             Debug.Log("---------------------Bottom :" + nextColor);
 
             if (currentColor==nextColor)
@@ -385,15 +401,15 @@ public class GameHandler : MonoBehaviour
         }
     }
     
-    public void ScoreByCreator(int index)
+    public void ScoreByCreator(int index,List<GameObject> appList)
     {
-        string currentCreator = Apps[index].GetComponent<AppAttriutes>().Creator;
+        string currentCreator = appList[index].GetComponent<AppAttriutes>().Creator;
         Debug.Log("---------------------Current :" + currentCreator);
         
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextCreator = Apps[index - 1].GetComponent<AppAttriutes>().Creator;
+            string nextCreator = appList[index - 1].GetComponent<AppAttriutes>().Creator;
             Debug.Log("---------------------Previous :" + nextCreator);
 
             if (currentCreator==nextCreator)
@@ -413,7 +429,7 @@ public class GameHandler : MonoBehaviour
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextCreator = Apps[index + 1].GetComponent<AppAttriutes>().Creator;
+            string nextCreator = appList[index + 1].GetComponent<AppAttriutes>().Creator;
             Debug.Log("---------------------Next :" + nextCreator);
 
             if (currentCreator==nextCreator)
@@ -433,7 +449,7 @@ public class GameHandler : MonoBehaviour
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextCreator = Apps[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().Creator;
+            string nextCreator = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().Creator;
             Debug.Log("---------------------Top :" + nextCreator);
 
             if (currentCreator==nextCreator)
@@ -451,9 +467,9 @@ public class GameHandler : MonoBehaviour
         }
         
         //Checking Bottom
-        if (index < (Apps.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
+        if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextCreator = Apps[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().Creator;
+            string nextCreator = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().Creator;
             Debug.Log("---------------------Bottom :" + nextCreator);
 
             if (currentCreator==nextCreator)
@@ -471,15 +487,15 @@ public class GameHandler : MonoBehaviour
         }
     }
     
-    public void ScoreByCategory(int index)
+    public void ScoreByCategory(int index,List<GameObject> appList)
     {
-        string currentCategory = Apps[index].GetComponent<AppAttriutes>().AppCatagory;
+        string currentCategory = appList[index].GetComponent<AppAttriutes>().AppCatagory;
         Debug.Log("---------------------Current :" + currentCategory);
         
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextCategory = Apps[index - 1].GetComponent<AppAttriutes>().AppCatagory;
+            string nextCategory = appList[index - 1].GetComponent<AppAttriutes>().AppCatagory;
             Debug.Log("---------------------Previous :" + nextCategory);
 
             if (currentCategory==nextCategory)
@@ -499,7 +515,7 @@ public class GameHandler : MonoBehaviour
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextCategory = Apps[index + 1].GetComponent<AppAttriutes>().AppCatagory;
+            string nextCategory = appList[index + 1].GetComponent<AppAttriutes>().AppCatagory;
             char[] nextTemp = nextCategory.ToCharArray();
             Debug.Log("---------------------Next :" + nextCategory);
 
@@ -520,7 +536,7 @@ public class GameHandler : MonoBehaviour
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextCategory = Apps[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppCatagory;
+            string nextCategory = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppCatagory;
             Debug.Log("---------------------Top :" + nextCategory);
 
             if (currentCategory==nextCategory)
@@ -538,9 +554,9 @@ public class GameHandler : MonoBehaviour
         }
         
         //Checking Bottom
-        if (index < (Apps.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
+        if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextCategory = Apps[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppCatagory;
+            string nextCategory = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppCatagory;
             Debug.Log("---------------------Bottom :" + nextCategory);
 
             if (currentCategory==nextCategory)

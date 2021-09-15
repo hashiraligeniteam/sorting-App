@@ -84,6 +84,11 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
             
         }
         GameHandler.Instance.appBeingused = false;
+        
+        GameHandler.Instance.OpenFolderRef.SetActive(false);
+        GameHandler.Instance.AppsMainParent.SetActive(false);
+        GameHandler.Instance.OpenFolderRef.SetActive(true);
+        GameHandler.Instance.AppsMainParent.SetActive(true);
     }
     
 

@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SideTrigger : MonoBehaviour
 {
-    public bool first;
+    [FormerlySerializedAs("first")] public bool rightTrigger;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (GetComponentInParent<UIDrag>())
@@ -13,7 +14,7 @@ public class SideTrigger : MonoBehaviour
             if (GetComponentInParent<UIDrag>().Drag == false && other.gameObject.GetComponentInParent<UIDrag>().Drag == true)
             {
                 Debug.Log("BeforeFirst");
-                if (first)
+                if (rightTrigger)
                 {
                     Debug.Log("In IF");
                     GetComponentInParent<UIDrag>().triggerEnteredOnce = true;
@@ -34,15 +35,15 @@ public class SideTrigger : MonoBehaviour
         if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
             (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
         {
-            GameHandler.Instance.UpdateChildList(other.transform.parent.gameObject,transform.parent.gameObject);
+            GameHandler.Instance.UpdateChildList(other.transform.parent.gameObject, transform.parent.gameObject);
             StartCoroutine(OnOffOtherCollider(other));
             
             GetComponentInParent<UIDrag>().triggerEnteredOnce = false;
             GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
         }
     }
-    
-    IEnumerator OnOffOtherCollider(GameObject other)
+
+    private IEnumerator OnOffOtherCollider(GameObject other)
     {
         GameHandler.Instance.DisableTriggers(transform.parent.gameObject, other.transform.parent.gameObject);
         other.gameObject.GetComponent<BoxCollider2D>().enabled = false;

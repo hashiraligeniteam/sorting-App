@@ -8,39 +8,35 @@ public class TriggerCheck : MonoBehaviour
 {
     public bool InsideFolder;
     public bool Folder;
-    public bool ObjectDragged;
     public GridLayoutGroup LayoutGroup;
-   
-    
+    public bool once;
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<UIDrag>() && GetComponent<UIDrag>())
         {
-            if (GetComponent<UIDrag>().Drag == true)
-            {
-                ObjectDragged = true;
-            }
 
             if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == false)
             {
                 if (GetComponent<UIDrag>().pointerUp == true && !InsideFolder)
                 {
-                    //Create folder
-                    Debug.Log("Folder Creation");
-                    if (other.GetComponent<TriggerCheck>().Folder)
+                    if (!Folder)
                     {
-                        GameHandler.Instance.AddInFolder(gameObject,other.gameObject);
+                        //Create folder
+                        Debug.Log("Folder Creation");
+                        if (other.GetComponent<TriggerCheck>().Folder)
+                        {
+                            GameHandler.Instance.AddInFolder(gameObject, other.gameObject);
+                        }
+                        else
+                        {
+                            if (!once)
+                            {
+                                once = true;
+                                GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject,this);
+                            }
+                        }
                     }
-                    else
-                    {
-                        GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject);
-                    }
-
-                    
-
                 }
-
-                ObjectDragged = false;
             }
         }
         
