@@ -34,8 +34,10 @@ public class GameHandler : MonoBehaviour
     public List<GameObject> InsideFolderApps;
     public GameObject currentFolderGridClosed;
 
-    public bool appBeingused;
+    public GameObject appPrefab;
 
+    public bool appBeingused;
+    private GameObject app;
     private void Awake()
     {
         Instance = this;
@@ -48,10 +50,16 @@ public class GameHandler : MonoBehaviour
     {
         for (int i = 0; i < LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps.Length; i++)
         {
-            AppsMainParent.transform.GetChild(i).GetComponent<AppAttriutes>().AppName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppName;
-            AppsMainParent.transform.GetChild(i).GetComponent<AppAttriutes>().ColorName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppColor;
-            AppsMainParent.transform.GetChild(i).GetComponent<AppAttriutes>().AppCatagory = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].Catagory;
-            AppsMainParent.transform.GetChild(i).GetComponent<AppAttriutes>().ShowText();
+            app = Instantiate(appPrefab);
+            app.transform.SetParent(AppsMainParent.transform);
+            app.GetComponent<AppAttriutes>().AppName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppName;
+            app.GetComponent<AppAttriutes>().ColorName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppColor;
+            app.GetComponent<AppAttriutes>().AppCatagory = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].Catagory;
+//            app.GetComponent<Image>().sprite = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppImage;
+            app.GetComponent<AppAttriutes>().ShowText();
+
+            app.transform.localScale = Vector3.one;
+            Apps.Add(app);
         }
         GameManager.Instance.score = 0;
     }
@@ -212,26 +220,29 @@ public class GameHandler : MonoBehaviour
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string previousName = appList[index - 1].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = previousName.ToCharArray();
-            Debug.Log("---------------------Previous :" + previousName);
-
-            for (int i = 0; i < currentTemp.Length; i++)
+            if (appList[index - 1].GetComponent<AppAttriutes>())
             {
-                //Debug.Log("-----CurrentFirst :" + currentTemp[i] + "-----NextFirst" + nextTemp[i]);
-                if (currentTemp[i] > nextTemp[i])
+                string previousName = appList[index - 1].GetComponent<AppAttriutes>().AppName;
+                char[] nextTemp = previousName.ToCharArray();
+                Debug.Log("---------------------Previous :" + previousName);
+
+                for (int i = 0; i < currentTemp.Length; i++)
                 {
-                    //Okay boss
-                    AddScore();
-                    Debug.Log("ScoreAdded");
-                    break;
-                }
-                else if (currentTemp[i] < nextTemp[i])
-                {
-                    //Score boss 
-                    DeductScore();
-                    Debug.Log("ScoreDeducted");
-                    break;
+                    //Debug.Log("-----CurrentFirst :" + currentTemp[i] + "-----NextFirst" + nextTemp[i]);
+                    if (currentTemp[i] > nextTemp[i])
+                    {
+                        //Okay boss
+                        AddScore();
+                        Debug.Log("ScoreAdded");
+                        break;
+                    }
+                    else if (currentTemp[i] < nextTemp[i])
+                    {
+                        //Score boss 
+                        DeductScore();
+                        Debug.Log("ScoreDeducted");
+                        break;
+                    }
                 }
             }
         }
@@ -239,25 +250,29 @@ public class GameHandler : MonoBehaviour
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextName = appList[index + 1].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = nextName.ToCharArray();
-            Debug.Log("---------------------Next :" + nextName);
-
-            for (int i = 0; i < currentTemp.Length; i++)
+            Debug.Log(index+1);
+            if ((index + 1 < appList.Count) && appList[index + 1].GetComponent<AppAttriutes>())
             {
-                if (currentTemp[i] > nextTemp[i])
+                string nextName = appList[index + 1].GetComponent<AppAttriutes>().AppName;
+                char[] nextTemp = nextName.ToCharArray();
+                Debug.Log("---------------------Next :" + nextName);
+
+                for (int i = 0; i < currentTemp.Length; i++)
                 {
-                    //score deducted
-                    DeductScore();
-                    Debug.Log("ScoreDeducted");
-                    break;
-                }
-                else if (currentTemp[i] < nextTemp[i])
-                {
-                    //score added
-                    AddScore();
-                    Debug.Log("ScoreAdded");
-                    break;
+                    if (currentTemp[i] > nextTemp[i])
+                    {
+                        //score deducted
+                        DeductScore();
+                        Debug.Log("ScoreDeducted");
+                        break;
+                    }
+                    else if (currentTemp[i] < nextTemp[i])
+                    {
+                        //score added
+                        AddScore();
+                        Debug.Log("ScoreAdded");
+                        break;
+                    }
                 }
             }
         }
@@ -265,25 +280,29 @@ public class GameHandler : MonoBehaviour
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string topName = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = topName.ToCharArray();
-            Debug.Log("---------------------Top :" + topName);
-
-            for (int i = 0; i < currentTemp.Length; i++)
+            if (appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>())
             {
-                if (currentTemp[i] > nextTemp[i])
+                string topName = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().AppName;
+                char[] nextTemp = topName.ToCharArray();
+                Debug.Log("---------------------Top :" + topName);
+
+                for (int i = 0; i < currentTemp.Length; i++)
                 {
-                    //score added
-                    AddScore();
-                    Debug.Log("ScoreAdded");
-                    break;
-                }
-                else if (currentTemp[i] < nextTemp[i])
-                {
-                    //add deducted
-                    DeductScore();
-                    Debug.Log("ScoreDeducted");
-                    break;
+                    if (currentTemp[i] > nextTemp[i])
+                    {
+                        //score added
+                        AddScore();
+                        Debug.Log("ScoreAdded");
+                        break;
+                    }
+                    else if (currentTemp[i] < nextTemp[i])
+                    {
+                        //add deducted
+                        DeductScore();
+                        Debug.Log("ScoreDeducted");
+                        break;
+                    }
                 }
             }
         }
@@ -291,25 +310,30 @@ public class GameHandler : MonoBehaviour
         //Checking Bottom
         if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string bottomName = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppName;
-            char[] nextTemp = bottomName.ToCharArray();
-            Debug.Log("---------------------Bottom :" + bottomName);
-
-            for (int i = 0; i < currentTemp.Length; i++)
+            if (appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                .GetComponent<AppAttriutes>())
             {
-                if (currentTemp[i] > nextTemp[i])
+                string bottomName = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().AppName;
+                char[] nextTemp = bottomName.ToCharArray();
+                Debug.Log("---------------------Bottom :" + bottomName);
+
+                for (int i = 0; i < currentTemp.Length; i++)
                 {
-                    //score deducted
-                    DeductScore();
-                    Debug.Log("ScoreDeducted");
-                    break;
-                }
-                else if (currentTemp[i] < nextTemp[i])
-                {
-                    //score added
-                    AddScore();
-                    Debug.Log("ScoreAdded");
-                    break;
+                    if (currentTemp[i] > nextTemp[i])
+                    {
+                        //score deducted
+                        DeductScore();
+                        Debug.Log("ScoreDeducted");
+                        break;
+                    }
+                    else if (currentTemp[i] < nextTemp[i])
+                    {
+                        //score added
+                        AddScore();
+                        Debug.Log("ScoreAdded");
+                        break;
+                    }
                 }
             }
         }
@@ -322,81 +346,97 @@ public class GameHandler : MonoBehaviour
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextColor = appList[index - 1].GetComponent<AppAttriutes>().ColorName;
-            Debug.Log("---------------------Previous :" + nextColor);
+            if (appList[index - 1].GetComponent<AppAttriutes>())
+            {
+                string nextColor = appList[index - 1].GetComponent<AppAttriutes>().ColorName;
+                Debug.Log("---------------------Previous :" + nextColor);
 
-            if (currentColor==nextColor)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentColor == nextColor)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
         
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextColor = appList[index + 1].GetComponent<AppAttriutes>().ColorName;
-            char[] nextTemp = nextColor.ToCharArray();
-            Debug.Log("---------------------Next :" + nextColor);
+            if (appList[index + 1].GetComponent<AppAttriutes>())
+            {
+                string nextColor = appList[index + 1].GetComponent<AppAttriutes>().ColorName;
+                char[] nextTemp = nextColor.ToCharArray();
+                Debug.Log("---------------------Next :" + nextColor);
 
-            if (currentColor==nextColor)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentColor == nextColor)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
 
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextColor = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().ColorName;
-            Debug.Log("---------------------Top :" + nextColor);
+            if (appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                .GetComponent<AppAttriutes>())
+            {
+                string nextColor = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().ColorName;
+                Debug.Log("---------------------Top :" + nextColor);
 
-            if (currentColor==nextColor)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentColor == nextColor)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
         
         //Checking Bottom
-        if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
+        if (index < (appList.Count - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextColor = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().ColorName;
-            Debug.Log("---------------------Bottom :" + nextColor);
+            if (appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                .GetComponent<AppAttriutes>())
+            {
+                string nextColor = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().ColorName;
+                Debug.Log("---------------------Bottom :" + nextColor);
 
-            if (currentColor==nextColor)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentColor == nextColor)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
     }
@@ -409,80 +449,95 @@ public class GameHandler : MonoBehaviour
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextCreator = appList[index - 1].GetComponent<AppAttriutes>().Creator;
-            Debug.Log("---------------------Previous :" + nextCreator);
+            if (appList[index - 1].GetComponent<AppAttriutes>())
+            {
+                string nextCreator = appList[index - 1].GetComponent<AppAttriutes>().Creator;
+                Debug.Log("---------------------Previous :" + nextCreator);
 
-            if (currentCreator==nextCreator)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCreator == nextCreator)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
         
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextCreator = appList[index + 1].GetComponent<AppAttriutes>().Creator;
-            Debug.Log("---------------------Next :" + nextCreator);
+            if (appList[index + 1].GetComponent<AppAttriutes>())
+            {
+                string nextCreator = appList[index + 1].GetComponent<AppAttriutes>().Creator;
+                Debug.Log("---------------------Next :" + nextCreator);
 
-            if (currentCreator==nextCreator)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCreator == nextCreator)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
 
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextCreator = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().Creator;
-            Debug.Log("---------------------Top :" + nextCreator);
+            if (appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>())
+            {
+                string nextCreator = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().Creator;
+                Debug.Log("---------------------Top :" + nextCreator);
 
-            if (currentCreator==nextCreator)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCreator == nextCreator)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
         
         //Checking Bottom
         if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextCreator = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().Creator;
-            Debug.Log("---------------------Bottom :" + nextCreator);
+            if (appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                .GetComponent<AppAttriutes>())
+            {
+                string nextCreator = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().Creator;
+                Debug.Log("---------------------Bottom :" + nextCreator);
 
-            if (currentCreator==nextCreator)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCreator == nextCreator)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
     }
@@ -495,81 +550,96 @@ public class GameHandler : MonoBehaviour
         //Checking Previous 
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != 0)
         {
-            string nextCategory = appList[index - 1].GetComponent<AppAttriutes>().AppCatagory;
-            Debug.Log("---------------------Previous :" + nextCategory);
+            if (appList[index - 1].GetComponent<AppAttriutes>())
+            {
+                string nextCategory = appList[index - 1].GetComponent<AppAttriutes>().AppCatagory;
+                Debug.Log("---------------------Previous :" + nextCategory);
 
-            if (currentCategory==nextCategory)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCategory == nextCategory)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
         
         // Checking Next
         if ((index % (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)) != LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col-1)
         {
-            string nextCategory = appList[index + 1].GetComponent<AppAttriutes>().AppCatagory;
-            char[] nextTemp = nextCategory.ToCharArray();
-            Debug.Log("---------------------Next :" + nextCategory);
+            if (appList[index + 1].GetComponent<AppAttriutes>())
+            {
+                string nextCategory = appList[index + 1].GetComponent<AppAttriutes>().AppCatagory;
+                char[] nextTemp = nextCategory.ToCharArray();
+                Debug.Log("---------------------Next :" + nextCategory);
 
-            if (currentCategory==nextCategory)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCategory == nextCategory)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
 
         //Checking Top
         if (index >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col)
         {
-            string nextCategory = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppCatagory;
-            Debug.Log("---------------------Top :" + nextCategory);
+            if (appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>())
+            {
+                string nextCategory = appList[index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().AppCatagory;
+                Debug.Log("---------------------Top :" + nextCategory);
 
-            if (currentCategory==nextCategory)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCategory == nextCategory)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
         
         //Checking Bottom
-        if (index < (appList.Count-LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
+        if (index < (appList.Count - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col))
         {
-            string nextCategory = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col].GetComponent<AppAttriutes>().AppCatagory;
-            Debug.Log("---------------------Bottom :" + nextCategory);
+            if (appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                .GetComponent<AppAttriutes>())
+            {
+                string nextCategory = appList[index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col]
+                    .GetComponent<AppAttriutes>().AppCatagory;
+                Debug.Log("---------------------Bottom :" + nextCategory);
 
-            if (currentCategory==nextCategory)
-            {
-                //Okay boss
-                AddScore();
-                Debug.Log("ScoreAdded");
-            }
-            else 
-            {
-                //Score boss 
-                DeductScore();
-                Debug.Log("ScoreDeducted");
+                if (currentCategory == nextCategory)
+                {
+                    //Okay boss
+                    AddScore();
+                    Debug.Log("ScoreAdded");
+                }
+                else
+                {
+                    //Score boss 
+                    DeductScore();
+                    Debug.Log("ScoreDeducted");
+                }
             }
         }
     }

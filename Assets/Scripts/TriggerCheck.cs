@@ -29,10 +29,11 @@ public class TriggerCheck : MonoBehaviour
                         }
                         else
                         {
-                            if (!once)
+                            if (!other.GetComponent<UIDrag>().Moving)
                             {
-                                once = true;
-                                GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject,this);
+                                Debug.Log(transform.parent.name + " Parent Name " + gameObject.name + " My name");
+                                GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject, this);
+                                other.GetComponent<UIDrag>().Moving = false;
                             }
                         }
                     }

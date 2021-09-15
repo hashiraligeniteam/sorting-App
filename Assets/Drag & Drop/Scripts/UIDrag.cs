@@ -14,12 +14,14 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
     public bool pointerUp;
     public bool triggerEnteredOnce;
     public bool triggerEnteredTwice;
+    public bool Moving;
 
     public void OnDrag(PointerEventData eventData)
     {
         //GameHandler.Instance.Dargging = true;
         transform.position = Input.mousePosition - diffPosition;
         Drag = true;
+        Moving = true;
         //Debug.Log(Input.mousePosition);
     }
 
@@ -85,10 +87,18 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
         }
         GameHandler.Instance.appBeingused = false;
         
-//        GameHandler.Instance.OpenFolderRef.SetActive(false);
-//        GameHandler.Instance.AppsMainParent.SetActive(false);
-//        GameHandler.Instance.OpenFolderRef.SetActive(true);
-//        GameHandler.Instance.AppsMainParent.SetActive(true);
+        StartCoroutine(ResetGrids());
+    }
+
+    IEnumerator ResetGrids()
+    {
+        yield return new WaitForSeconds(0.05f);
+        GameHandler.Instance.OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = false;
+        GameHandler.Instance.AppsMainParent.GetComponent<GridLayoutGroup>().enabled = false;
+        yield return new WaitForSeconds(0.05f);
+        GameHandler.Instance.OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = true;
+        GameHandler.Instance.AppsMainParent.GetComponent<GridLayoutGroup>().enabled = true;
+        Moving = false;
     }
     
 
