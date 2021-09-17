@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameHandler : MonoBehaviour
 {
@@ -38,15 +38,41 @@ public class GameHandler : MonoBehaviour
 
     public bool appBeingused;
     private GameObject app;
+
+    [Header("Screens")]
+    public GameObject LevelCompleteScreen;
+    public GameObject ProfileScreen;
+    public GameObject MainScreen;
+
+    public List<GameObject> Folders;
+
+    int DrageObjectIndex;
+    int ColliedObjectindex;
+
     private void Awake()
     {
         Instance = this;
     }
   
-    int DrageObjectIndex;
-    int ColliedObjectindex;
+    
 
     private void Start()
+    {
+        if (GameManager.Instance.Next)
+        {
+            MainScreen.SetActive(false);
+            ProfileScreen.SetActive(true);
+        }
+        if (GameManager.Instance.Restart)
+        {
+            MainScreen.SetActive(false);
+            ProfileScreen.SetActive(false);
+            Initiate();
+        }
+        GameManager.Instance.Next = false;
+        GameManager.Instance.Restart = false;
+    }
+    public void Initiate()
     {
         for (int i = 0; i < LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps.Length; i++)
         {
@@ -55,7 +81,7 @@ public class GameHandler : MonoBehaviour
             app.GetComponent<AppAttriutes>().AppName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppName;
             app.GetComponent<AppAttriutes>().ColorName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppColor;
             app.GetComponent<AppAttriutes>().AppCatagory = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].Catagory;
-//            app.GetComponent<Image>().sprite = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppImage;
+            //            app.GetComponent<Image>().sprite = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppImage;
             app.GetComponent<AppAttriutes>().ShowText();
 
             app.transform.localScale = Vector3.one;
@@ -146,6 +172,7 @@ public class GameHandler : MonoBehaviour
         draggedApp.SetActive(true);
         AssignGridSize(folder.GetComponentInChildren<GridLayoutGroup>(), true);
         tCheck.once = false;
+        Folders.Add(folder);
     }
 
     public void AddInFolder(GameObject app,GameObject folder)
@@ -208,6 +235,10 @@ public class GameHandler : MonoBehaviour
         }
 
         scoreText.text = GameManager.Instance.score.ToString();
+        if (GameManager.Instance.score >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].ScoreToComplete)
+        {
+            LevelCompleteScreen.SetActive(true);
+        }
     }
 
     public void ScoreByName(int index,List<GameObject> appList)
@@ -680,5 +711,26 @@ public class GameHandler : MonoBehaviour
         {
             c.enabled = false;
         }
+    }
+    public void OnPlay()
+    {
+        MainScreen.SetActive(false);
+        ProfileScreen.SetActive(true);
+    }
+    public void OnSelectProfile(int LeveLNo) 
+    {
+        GameManager.Instance.LevelNo = LeveLNo;
+        ProfileScreen.SetActive(false);
+        Initiate();
+    }
+    public void OnRestart()
+    {
+        GameManager.Instance.Restart = true;
+        SceneManager.LoadScene("Gameplay");
+    }
+    public void OnNext()
+    {
+        GameManager.Instance.Next = true;
+        SceneManager.LoadScene("Gameplay");
     }
 }

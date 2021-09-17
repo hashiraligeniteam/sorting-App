@@ -62,6 +62,7 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
                 GameHandler.Instance.OpenFolderRef.transform.GetChild(0).transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
                 GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject.SetActive(false);
                 GameHandler.Instance.currentFolderGridClosed.transform.parent.SetParent(GameHandler.Instance.transform);
+                GameHandler.Instance.Folders.Remove(GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject);
                 DestroyImmediate(GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject);
             }
             
