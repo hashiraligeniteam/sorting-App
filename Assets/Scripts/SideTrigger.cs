@@ -13,36 +13,38 @@ public class SideTrigger : MonoBehaviour
         {
             if (GetComponentInParent<UIDrag>().Drag == false && other.gameObject.GetComponentInParent<UIDrag>().Drag == true)
             {
-                Debug.Log("BeforeFirst");
+             
                 if (rightTrigger)
                 {
-                    Debug.Log("In IF");
+                  
                     GetComponentInParent<UIDrag>().triggerEnteredOnce = true;
                 }
                 else
                 {
-                    Debug.Log("In Else");
+                   
                     GetComponentInParent<UIDrag>().triggerEnteredTwice = true;
                 }
-                
-                SwitchApps(other.gameObject);
+
+                AssignSwapObject(other.gameObject);
             }
         }
     }
 
-    private void SwitchApps(GameObject other)
+    private void AssignSwapObject(GameObject other)
     {
         if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
             (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
         {
-            GameHandler.Instance.UpdateChildList(other.transform.parent.gameObject, transform.parent.gameObject);
-            StartCoroutine(OnOffOtherCollider(other));
-            
-            GetComponentInParent<UIDrag>().triggerEnteredOnce = false;
-            GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
+            GameHandler.Instance.SwapableObject = transform.parent.gameObject;
         }
     }
-
+    public void SwitchApps(GameObject other) 
+    {
+        GameHandler.Instance.UpdateChildList(other.gameObject, transform.parent.gameObject);
+        StartCoroutine(OnOffOtherCollider(other));
+        GetComponentInParent<UIDrag>().triggerEnteredOnce = false;
+        GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
+    }
     private IEnumerator OnOffOtherCollider(GameObject other)
     {
         GameHandler.Instance.DisableTriggers(transform.parent.gameObject, other.transform.parent.gameObject);
@@ -51,5 +53,24 @@ public class SideTrigger : MonoBehaviour
         other.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         GameHandler.Instance.EnableTriggers();
     }
-    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (GetComponentInParent<UIDrag>())
+        {
+            if (!GetComponentInParent<TriggerCheck>().Middle)
+            {
+                StartCoroutine(wait(other));
+            }
+        }
+    }
+    IEnumerator wait(Collider2D other) 
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (GetComponentInParent<UIDrag>().triggerEnteredOnce && other.gameObject.GetComponentInParent<UIDrag>().triggerEnteredTwice)
+        {
+            GetComponentInParent<UIDrag>().triggerEnteredOnce = false;
+            GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
+        }
+    }
+
 }

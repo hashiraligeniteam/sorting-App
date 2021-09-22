@@ -10,8 +10,12 @@ public class TriggerCheck : MonoBehaviour
     public bool Folder;
     public GridLayoutGroup LayoutGroup;
     public bool once;
+    public bool Middle;
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (other.gameObject.GetComponent<TriggerCheck>()) {
+            Middle = true;
+        }
         if (other.GetComponent<UIDrag>() && GetComponent<UIDrag>())
         {
 
@@ -53,6 +57,7 @@ public class TriggerCheck : MonoBehaviour
                 int folderChildCount = LayoutGroup.transform.childCount;
                 for (int i=0;i<folderChildCount;i++)
                 {
+                 
                     LayoutGroup.transform.GetChild(0).SetParent(GameHandler.Instance.OpenFolderRef.transform);
                 }
                 foreach (GameObject obj in GameHandler.Instance.Apps)
@@ -62,6 +67,7 @@ public class TriggerCheck : MonoBehaviour
                 GameHandler.Instance.InsideFolderApps.Clear();
                 for (int i = 0; i < GameHandler.Instance.OpenFolderRef.transform.childCount; i++)
                 {
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<TriggerCheck>().Middle = false;
                     GameHandler.Instance.ActivateTriggers(GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject);
                     GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<TriggerCheck>().InsideFolder = true;
                     GameHandler.Instance.InsideFolderApps.Add(GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject);
@@ -72,5 +78,12 @@ public class TriggerCheck : MonoBehaviour
             }
         }
     }
-  
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<TriggerCheck>())
+        {
+            Middle = false;
+        }
+    }
+
 }

@@ -99,6 +99,7 @@ MonoBehaviour:
   pointerUp: 0
   triggerEnteredOnce: 0
   triggerEnteredTwice: 0
+  Moving: 0
 --- !u!61 &8615671239129596736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 109.90873, y: 128.15295}
+  m_Size: {x: 50, y: 50}
   m_EdgeRadius: 0
 --- !u!50 &2504662159648225795
 Rigidbody2D:
@@ -158,9 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a9218d302f3f840b7afd2b2637f1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InsideFolder: 0
   Folder: 1
-  ObjectDragged: 0
   LayoutGroup: {fileID: 3857859576664055875}
+  once: 0
+  Middle: 0
 --- !u!114 &5955230811129957949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +305,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 19.38664, y: -0.5}
+  m_Offset: {x: 29.333633, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -313,7 +316,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.5961, y: 200}
+  m_Size: {x: 58.49008, y: 200}
   m_EdgeRadius: 0
 --- !u!114 &1381657064548017683
 MonoBehaviour:
@@ -327,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315bf3d4e1fd7fd4b98b11d29e86a366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  first: 0
+  rightTrigger: 0
 --- !u!1 &7394380184762615814
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +390,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -19.386642, y: -0.5}
+  m_Offset: {x: -25.44133, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -398,7 +401,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.5961, y: 200}
+  m_Size: {x: 50.705475, y: 200}
   m_EdgeRadius: 0
 --- !u!114 &4751125700684522804
 MonoBehaviour:
@@ -412,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315bf3d4e1fd7fd4b98b11d29e86a366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  first: 1
+  rightTrigger: 1
 --- !u!1 &7966044974292891809
 GameObject:
   m_ObjectHideFlags: 0

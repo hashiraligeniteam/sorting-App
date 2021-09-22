@@ -16,12 +16,20 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
     public bool triggerEnteredTwice;
     public bool Moving;
 
+
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+      
+    }
     public void OnDrag(PointerEventData eventData)
     {
         //GameHandler.Instance.Dargging = true;
         transform.position = Input.mousePosition - diffPosition;
         Drag = true;
         Moving = true;
+        GameHandler.Instance.DraggedObject = this.gameObject;
+    
         //Debug.Log(Input.mousePosition);
     }
 
@@ -34,6 +42,7 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
 
     public void OnPointerDown(PointerEventData eventData)
     {
+       // GameHandler.Instance.StartPosition = gameObject.transform.localPosition;
         GameHandler.Instance.appBeingused = true;
         pointerUp = false;
         startPosition = transform.position;
@@ -41,17 +50,15 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
         EventSystem.current.SetSelectedGameObject(gameObject);
 
         GameHandler.Instance.finalAppPosition = transform.localPosition;
-        //EventSystem.current.currentSelectedGameObject.transform.SetParent(canvas_.transform);
-        //EventSystem.current.currentSelectedGameObject.transform.SetAsFirstSibling();
+       
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-//        transform.localPosition = GameHandler.Instance.finalAppPosition;
+
         pointerUp = true;
         
         if (GetComponent<TriggerCheck>().InsideFolder && !RectTransformUtility.RectangleContainsScreenPoint(GameHandler.Instance.OpenFolderRef.GetComponent<Image>().rectTransform, Input.mousePosition))
         {
-            Debug.Log("MoveAppOutOfFolder");
             GameHandler.Instance.InsideFolderApps.Remove(this.gameObject);
             GameHandler.Instance.Apps.Add(this.gameObject);
             transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
@@ -62,7 +69,7 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
                 GameHandler.Instance.OpenFolderRef.transform.GetChild(0).transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
                 GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject.SetActive(false);
                 GameHandler.Instance.currentFolderGridClosed.transform.parent.SetParent(GameHandler.Instance.transform);
-                GameHandler.Instance.Folders.Remove(GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject);
+             
                 DestroyImmediate(GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject);
             }
             
@@ -86,9 +93,29 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
             }
             
         }
-        GameHandler.Instance.appBeingused = false;
         
-        StartCoroutine(ResetGrids());
+        GameHandler.Instance.appBeingused = false;
+       
+       
+        GameHandler.Instance.CheckScore(GetComponent<TriggerCheck>().InsideFolder);
+        if (GetComponent<UIDrag>())
+        {
+            if (GameHandler.Instance.SwapableObject && !GameHandler.Instance.SwapableObject.GetComponent<TriggerCheck>().Middle)
+            {
+                if (!GameHandler.Instance.SwapableObject.GetComponent<TriggerCheck>().Folder)
+                {
+                    if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredOnce && GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredTwice)
+                    {
+                        this.gameObject.transform.GetComponentInChildren<SideTrigger>().SwitchApps(GameHandler.Instance.SwapableObject);
+                    }
+                    else 
+                    {
+                        StartCoroutine(ResetGrids());
+                    }
+                }
+            }
+        }
+        //StartCoroutine(ResetGrids());
     }
 
     IEnumerator ResetGrids()

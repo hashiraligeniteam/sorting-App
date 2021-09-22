@@ -475,8 +475,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 788.1, y: 0}
-  m_SizeDelta: {x: 1566.2, y: 0}
+  m_AnchoredPosition: {x: -51.899994, y: 0}
+  m_SizeDelta: {x: 30, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188512732
 MonoBehaviour:
@@ -1062,6 +1062,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db431b11f21f01c48b6a83f015edd449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Drag: 0
+  pointerUp: 0
+  triggerEnteredOnce: 0
+  triggerEnteredTwice: 0
+  Moving: 0
 --- !u!114 &581723198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db431b11f21f01c48b6a83f015edd449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Drag: 0
+  pointerUp: 0
+  triggerEnteredOnce: 0
+  triggerEnteredTwice: 0
+  Moving: 0
 --- !u!114 &922202266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,6 +2166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db431b11f21f01c48b6a83f015edd449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Drag: 0
+  pointerUp: 0
+  triggerEnteredOnce: 0
+  triggerEnteredTwice: 0
+  Moving: 0
 --- !u!1 &1375232645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,8 +2212,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 783.1, y: 0}
-  m_SizeDelta: {x: 1556.2, y: 0}
+  m_AnchoredPosition: {x: 15, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375232647
 MonoBehaviour:

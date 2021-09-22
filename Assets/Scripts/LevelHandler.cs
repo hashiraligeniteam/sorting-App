@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public enum ScoreState
 {
@@ -35,6 +36,7 @@ public class Levels
     public int col;
     public ScoreState[] scoreSequence;
     public int ScoreToComplete;
+    public string ObjectiveText;
 }
 public class LevelHandler : MonoBehaviour
 {
