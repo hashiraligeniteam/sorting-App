@@ -324,9 +324,10 @@ public class GameHandler : MonoBehaviour
 
                 for (int i = 0; i < currentTemp.Length; i++)
                 {
-                    //Debug.Log("-----CurrentFirst :" + currentTemp[i] + "-----NextFirst" + nextTemp[i]);
+                    Debug.Log("-----CurrentFirst :" + currentTemp[i] + "-----NextFirst" + nextTemp[i]);
                     if (currentTemp[i] > nextTemp[i])
                     {
+                        Debug.Log("Score By Name Added");
                         //Okay boss
                         AddScore();
                       
@@ -365,7 +366,7 @@ public class GameHandler : MonoBehaviour
                     {
                         //score added
                         AddScore();
-                      
+                        Debug.Log("Score By Name Added");
                         break;
                     }
                 }
@@ -386,6 +387,7 @@ public class GameHandler : MonoBehaviour
                 {
                     if (currentTemp[i] > nextTemp[i])
                     {
+                        Debug.Log("Score By Name Added");
                         //score added
                         AddScore();
                       
@@ -417,6 +419,7 @@ public class GameHandler : MonoBehaviour
                 {
                     if (currentTemp[i] > nextTemp[i])
                     {
+                        Debug.Log("Score By Name Added");
                         //score deducted
                         DeductScore();
                      
@@ -448,6 +451,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
+                    Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                
@@ -472,6 +476,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
+                    Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                   
@@ -497,6 +502,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
+                    Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                  
@@ -522,6 +528,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
+                    Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                     
@@ -551,6 +558,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
+                    Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                    
@@ -574,6 +582,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
+                    Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                   
@@ -598,6 +607,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
+                    Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                  
@@ -623,6 +633,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
+                    Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                   
@@ -652,6 +663,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
+                    Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                    
@@ -676,6 +688,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
+                    Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                   
@@ -700,6 +713,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
+                    Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                   
@@ -725,6 +739,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
+                    Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                   
