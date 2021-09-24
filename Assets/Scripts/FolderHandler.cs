@@ -49,7 +49,14 @@ public class FolderHandler : MonoBehaviour
             {
                 GameHandler.Instance.ActivateTriggers(app);
             }
-
+         
+            GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<Image>().enabled = false;
+            GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<AppAttriutes>().AppsCountImage.SetActive(true);
+            for (int i=GameHandler.Instance.MaxAppsInFolder+1;i< GameHandler.Instance.currentFolderGridClosed.transform.childCount;i++) 
+            {
+                GameHandler.Instance.currentFolderGridClosed.transform.GetChild(i).gameObject.SetActive(false);
+            }
+            GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<AppAttriutes>().AppsCountText.text = "+ " + (GameHandler.Instance.currentFolderGridClosed.transform.childCount - GameHandler.Instance.MaxAppsInFolder);
             GameHandler.Instance.InsideFolderApps.Clear();
             GameHandler.Instance.currentFolderGridClosed = null;
         }

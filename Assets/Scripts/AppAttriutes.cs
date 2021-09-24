@@ -12,7 +12,11 @@ public class AppAttriutes : MonoBehaviour
     public string AppName;
     public Text nameText;
 
-   
+    public GameObject HighLighter;
+    public Text AppsCountText;
+    public GameObject AppsCountImage;
+    public Sprite MainSPrite;
+    public Sprite HighliterSprite;
     public void ShowText()
     {
         nameText.text = AppName;

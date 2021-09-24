@@ -55,6 +55,11 @@ public class SideTrigger : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
+        if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
+          (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
+        {
+            GameHandler.Instance.SwapableObject = null;
+        }
         if (GetComponentInParent<UIDrag>())
         {
             if (!GetComponentInParent<TriggerCheck>().Middle)

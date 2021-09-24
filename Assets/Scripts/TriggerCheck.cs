@@ -13,26 +13,39 @@ public class TriggerCheck : MonoBehaviour
     public bool Middle;
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<TriggerCheck>()) {
+        if (other.gameObject.GetComponent<TriggerCheck>()) 
+        {
             Middle = true;
+
+            if (GetComponent<AppAttriutes>()) 
+            {
+                GetComponent<AppAttriutes>().MainSPrite = GetComponent<Image>().sprite;
+                GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;
+                GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+                //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
+            }
         }
         if (other.GetComponent<UIDrag>() && GetComponent<UIDrag>())
         {
-
+            Debug.Log("First Drag");
             if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == false)
             {
+                Debug.Log("First Drag 1");
                 if (GetComponent<UIDrag>().pointerUp == true && !InsideFolder)
                 {
+                    Debug.Log("First Drag 2");
                     if (!Folder)
                     {
                         //Create folder
                         Debug.Log("Folder Creation");
                         if (other.GetComponent<TriggerCheck>().Folder)
                         {
+                            Debug.Log("adding in folder");
                             GameHandler.Instance.AddInFolder(gameObject, other.gameObject);
                         }
                         else
                         {
+                            Debug.Log("Create Folder");
                             if (!other.GetComponent<UIDrag>().Moving)
                             {
                                 Debug.Log(transform.parent.name + " Parent Name " + gameObject.name + " My name");
@@ -43,6 +56,7 @@ public class TriggerCheck : MonoBehaviour
                     }
                 }
             }
+        
         }
         
     }
@@ -67,6 +81,9 @@ public class TriggerCheck : MonoBehaviour
                 GameHandler.Instance.InsideFolderApps.Clear();
                 for (int i = 0; i < GameHandler.Instance.OpenFolderRef.transform.childCount; i++)
                 {
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject.SetActive(true);
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<Image>().enabled = true;
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<AppAttriutes>().AppsCountImage.SetActive(false);
                     GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<TriggerCheck>().Middle = false;
                     GameHandler.Instance.ActivateTriggers(GameHandler.Instance.OpenFolderRef.transform.GetChild(i).gameObject);
                     GameHandler.Instance.OpenFolderRef.transform.GetChild(i).GetComponent<TriggerCheck>().InsideFolder = true;
@@ -82,7 +99,11 @@ public class TriggerCheck : MonoBehaviour
     {
         if (other.gameObject.GetComponent<TriggerCheck>())
         {
+            Debug.Log("Exit");
             Middle = false;
+            GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+            //GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite; 
+            //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;
         }
     }
 

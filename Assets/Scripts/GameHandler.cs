@@ -14,7 +14,7 @@ public class GameHandler : MonoBehaviour
     public List<GameObject> Apps;
     [Header("Phone Object")]
     public GameObject AppsMainParent;
-   // [HideInInspector]
+    [HideInInspector]
     public Vector3 finalAppPosition;
     [Header("Score")]
     public float addScore = 1f;
@@ -60,6 +60,10 @@ public class GameHandler : MonoBehaviour
  
 
     public float MoveSpeed;
+    public int MaxAppsInFolder;
+
+
+
     private void Awake()
     {
         Instance = this;
@@ -139,7 +143,7 @@ public class GameHandler : MonoBehaviour
         {
             DisableTriggers(AppsMainParent.transform.GetChild(i).gameObject);
         }
-        Debug.Log(DrageObjectIndex+" DrageObj "+ ColliedObjectindex);
+       
         OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = false;
         AppsMainParent.GetComponent<GridLayoutGroup>().enabled = false;
       
@@ -147,7 +151,7 @@ public class GameHandler : MonoBehaviour
         Vector3 SwapPos = SwapableObject.transform.localPosition;
         //DrageObject.transform.DOLocalMove(SwapableObject.transform.localPosition, MoveSpeed);
         ColliedObject.transform.SetSiblingIndex(DrageObjectIndex);
-        Debug.Log(Diff +" Diff");
+       
         //int DummyIndex = DrageObjectIndex;
         if (Mathf.Abs(Diff) != 1)
         {
@@ -172,7 +176,7 @@ public class GameHandler : MonoBehaviour
         }
         else 
         {
-            Debug.Log("kjfdshidshfoihseoifhseoifoisfeoih");
+            
             // DrageObject.transform.SetSiblingIndex(ColliedObjectindex);
             DrageObject.transform.DOLocalMove(SwapPos, MoveSpeed);
             ColliedObject.transform.DOLocalMove(finalAppPosition,MoveSpeed).OnComplete( ()=> {
@@ -186,7 +190,8 @@ public class GameHandler : MonoBehaviour
             ActivateTriggers(AppsMainParent.transform.GetChild(i).gameObject);
         }
         UpdateListIndex(ColliedObject.GetComponent<TriggerCheck>().InsideFolder);
-      
+        ColliedObject.GetComponent<UIDrag>().Moving = false;
+        DrageObject.GetComponent<UIDrag>().Moving = false;
     }
 
     public void UpdateListIndex(bool InsideFolder)
@@ -214,6 +219,7 @@ public class GameHandler : MonoBehaviour
     public void CreateFolder(GameObject collidedApp,GameObject draggedApp, TriggerCheck tCheck)
     {
         GameObject folder = Instantiate(folderPrefab, AppsMainParent.transform);
+        Debug.Log(Apps.IndexOf(draggedApp) + " Dragged "+ Apps.IndexOf(collidedApp));
         folder.transform.SetSiblingIndex(Apps.IndexOf(collidedApp));
         collidedApp.SetActive(false);
         draggedApp.SetActive(false);
@@ -229,7 +235,7 @@ public class GameHandler : MonoBehaviour
 
         collidedApp.SetActive(true);
         draggedApp.SetActive(true);
-        AssignGridSize(folder.GetComponentInChildren<GridLayoutGroup>(), true);
+       // AssignGridSize(folder.GetComponentInChildren<GridLayoutGroup>(), true);
         tCheck.once = false;
       
     }
@@ -240,6 +246,22 @@ public class GameHandler : MonoBehaviour
         app.transform.SetParent(folder.GetComponent<TriggerCheck>().LayoutGroup.transform);
         Destroy(app.GetComponent<UIDrag>());
         DisableTriggers(app);
+
+        if (folder.GetComponent<TriggerCheck>().LayoutGroup.transform.childCount > MaxAppsInFolder) 
+        {
+            app.SetActive(false);
+            GameObject Obj = folder.GetComponent<TriggerCheck>().LayoutGroup.transform.GetChild(MaxAppsInFolder - 1).gameObject;
+            Obj.GetComponent<Image>().enabled = false;
+            Obj.GetComponent<AppAttriutes>().AppsCountImage.SetActive(true);
+            Obj.GetComponent<AppAttriutes>().AppsCountText.text = "+ " + (folder.GetComponent<TriggerCheck>().LayoutGroup.transform.childCount - MaxAppsInFolder);
+        }
+
+        //if (folder.GetComponent<TriggerCheck>().LayoutGroup.transform.childCount >= MaxAppsInFolder)
+        //{
+        //    Debug.Log("Here");
+        
+        //}
+
         UpdateListIndex(true);
     }
 
@@ -324,10 +346,10 @@ public class GameHandler : MonoBehaviour
 
                 for (int i = 0; i < currentTemp.Length; i++)
                 {
-                    Debug.Log("-----CurrentFirst :" + currentTemp[i] + "-----NextFirst" + nextTemp[i]);
+                  //  Debug.Log("-----CurrentFirst :" + currentTemp[i] + "-----NextFirst" + nextTemp[i]);
                     if (currentTemp[i] > nextTemp[i])
                     {
-                        Debug.Log("Score By Name Added");
+                     //   Debug.Log("Score By Name Added");
                         //Okay boss
                         AddScore();
                       
@@ -366,7 +388,7 @@ public class GameHandler : MonoBehaviour
                     {
                         //score added
                         AddScore();
-                        Debug.Log("Score By Name Added");
+                       // Debug.Log("Score By Name Added");
                         break;
                     }
                 }
@@ -387,7 +409,7 @@ public class GameHandler : MonoBehaviour
                 {
                     if (currentTemp[i] > nextTemp[i])
                     {
-                        Debug.Log("Score By Name Added");
+                       // Debug.Log("Score By Name Added");
                         //score added
                         AddScore();
                       
@@ -419,7 +441,7 @@ public class GameHandler : MonoBehaviour
                 {
                     if (currentTemp[i] > nextTemp[i])
                     {
-                        Debug.Log("Score By Name Added");
+                     //   Debug.Log("Score By Name Added");
                         //score deducted
                         DeductScore();
                      
@@ -451,7 +473,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
-                    Debug.Log("Score By Name Added");
+                   // Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                
@@ -476,7 +498,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
-                    Debug.Log("Score By Name Added");
+                   // Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                   
@@ -502,7 +524,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
-                    Debug.Log("Score By Name Added");
+                  //  Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                  
@@ -528,7 +550,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentColor == nextColor)
                 {
-                    Debug.Log("Score By Name Added");
+                   // Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
                     
@@ -558,7 +580,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
-                    Debug.Log("Score By Creator Added");
+                   // Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                    
@@ -582,7 +604,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
-                    Debug.Log("Score By Creator Added");
+                   // Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                   
@@ -607,7 +629,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
-                    Debug.Log("Score By Creator Added");
+                   // Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                  
@@ -633,7 +655,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCreator == nextCreator)
                 {
-                    Debug.Log("Score By Creator Added");
+                  //  Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
                   
@@ -663,7 +685,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
-                    Debug.Log("Score By Category Added");
+                   // Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                    
@@ -688,7 +710,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
-                    Debug.Log("Score By Category Added");
+                   // Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                   
@@ -713,7 +735,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
-                    Debug.Log("Score By Category Added");
+                   // Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                   
@@ -739,7 +761,7 @@ public class GameHandler : MonoBehaviour
 
                 if (currentCategory == nextCategory)
                 {
-                    Debug.Log("Score By Category Added");
+                    //Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
                   
@@ -755,23 +777,23 @@ public class GameHandler : MonoBehaviour
     }
     
     #endregion
-    public void AssignGridSize(GridLayoutGroup Grid,bool folder) 
-    {
-        if (folder)
-        {
-            Grid.cellSize = new Vector2(Grid.cellSize.x / GridMultiplier, Grid.cellSize.y / GridMultiplier);
-            Grid.padding.left = ( Grid.padding.left / (int)GridMultiplier);
-            Grid.padding.top = (Grid.padding.top / (int)GridMultiplier);
-            Grid.spacing = new Vector2(Grid.spacing.x / GridMultiplier, Grid.spacing.y / GridMultiplier);
-        }
-        else 
-        {
-            Grid.cellSize = new Vector2(Grid.cellSize.x * GridMultiplier, Grid.cellSize.y * GridMultiplier);
-            Grid.padding.left = (Grid.padding.left * (int)GridMultiplier);
-            Grid.padding.top = (Grid.padding.top * (int)GridMultiplier);
-            Grid.spacing = new Vector2(Grid.spacing.x * GridMultiplier, Grid.spacing.y * GridMultiplier);
-        }
-    }
+    //public void AssignGridSize(GridLayoutGroup Grid,bool folder) 
+    //{
+    //    if (folder)
+    //    {
+    //        //Grid.cellSize = new Vector2(Grid.cellSize.x / GridMultiplier, Grid.cellSize.y / GridMultiplier);
+    //        //Grid.padding.left = ( Grid.padding.left / (int)GridMultiplier);
+    //        //Grid.padding.top = (Grid.padding.top / (int)GridMultiplier);
+    //        //Grid.spacing = new Vector2(Grid.spacing.x / GridMultiplier, Grid.spacing.y / GridMultiplier);
+    //    }
+    //    //else 
+    //    //{
+    //    //    Grid.cellSize = new Vector2(Grid.cellSize.x * GridMultiplier, Grid.cellSize.y * GridMultiplier);
+    //    //    Grid.padding.left = (Grid.padding.left * (int)GridMultiplier);
+    //    //    Grid.padding.top = (Grid.padding.top * (int)GridMultiplier);
+    //    //    Grid.spacing = new Vector2(Grid.spacing.x * GridMultiplier, Grid.spacing.y * GridMultiplier);
+    //    //}
+    //}
     public void ActivateTriggers(GameObject Obj) 
     {
         Obj.GetComponent<Collider2D>().enabled = true;
@@ -811,5 +833,12 @@ public class GameHandler : MonoBehaviour
     {
         GameManager.Instance.Next = true;
         SceneManager.LoadScene("Gameplay");
+    }
+
+   public IEnumerator DestroyingObjects(GraphicRaycaster _RayCaster,Canvas _Canvas)
+    {
+        Destroy(_RayCaster);
+        yield return new WaitForSeconds(0.15f);
+        Destroy(_Canvas);
     }
 }
