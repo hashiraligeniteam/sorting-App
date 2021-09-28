@@ -34,7 +34,7 @@ public class GameHandler : MonoBehaviour
     [Header("Inside Folder List")]
     public List<GameObject> InsideFolderApps;
     public GameObject currentFolderGridClosed;
-
+    [HideInInspector]
     public GameObject appPrefab;
 
     public bool appBeingused;
@@ -49,7 +49,6 @@ public class GameHandler : MonoBehaviour
 
     //public List<GameObject> Folders;
 
-    public Image ProgressBar;
 
     int DrageObjectIndex;
     int ColliedObjectindex;
@@ -61,6 +60,11 @@ public class GameHandler : MonoBehaviour
 
     public float MoveSpeed;
     public int MaxAppsInFolder;
+
+    [Header("Profile")]
+    public Sprite[] ProfileImages;
+    public Image ProfileImage;
+    public Image ProgressBar;
 
 
 
@@ -128,22 +132,30 @@ public class GameHandler : MonoBehaviour
 
     public void UpdateChildList(GameObject DrageObject, GameObject ColliedObject) 
     {
-     
+      
         if (ColliedObject.GetComponent<TriggerCheck>().InsideFolder)
         {
+          
             ColliedObjectindex = InsideFolderApps.IndexOf(ColliedObject);
             DrageObjectIndex = InsideFolderApps.IndexOf(DrageObject);
+            for (int i = 0; i < OpenFolderRef.transform.childCount; i++)
+            {
+                DisableTriggers(OpenFolderRef.transform.GetChild(i).gameObject);
+            }
         }
         else
         {
+
             ColliedObjectindex = Apps.IndexOf(ColliedObject);
             DrageObjectIndex = Apps.IndexOf(DrageObject);
+            for (int i = 0; i < AppsMainParent.transform.childCount; i++)
+            {
+                DisableTriggers(AppsMainParent.transform.GetChild(i).gameObject);
+            }
         }
-        for (int i = 0; i < AppsMainParent.transform.childCount; i++)
-        {
-            DisableTriggers(AppsMainParent.transform.GetChild(i).gameObject);
-        }
-       
+    
+    
+
         OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = false;
         AppsMainParent.GetComponent<GridLayoutGroup>().enabled = false;
       
@@ -159,16 +171,37 @@ public class GameHandler : MonoBehaviour
             {
                 for (int i = DrageObjectIndex; i < ColliedObjectindex; i++)
                 {
-                    AppsMainParent.transform.GetChild(i).transform.DOLocalMove(AppsMainParent.transform.GetChild(i + 1).transform.localPosition, MoveSpeed);
+                    if (!ColliedObject.GetComponent<TriggerCheck>().InsideFolder)
+                    {
+                        AppsMainParent.transform.GetChild(i).transform.DOLocalMove(AppsMainParent.transform.GetChild(i + 1).transform.localPosition, MoveSpeed);
+                    }
+                    else
+                    {
+                        OpenFolderRef.transform.GetChild(i).transform.DOLocalMove(OpenFolderRef.transform.GetChild(i + 1).transform.localPosition, MoveSpeed);
+                    }
                 }
             }
             else
             {
-                AppsMainParent.transform.GetChild(ColliedObjectindex).transform.DOLocalMove(finalAppPosition, MoveSpeed);
-                for (int i = ColliedObjectindex + 1; i < DrageObjectIndex; i++)
+                if (!ColliedObject.GetComponent<TriggerCheck>().InsideFolder)
                 {
+                    AppsMainParent.transform.GetChild(ColliedObjectindex).transform.DOLocalMove(finalAppPosition, MoveSpeed);
+                    for (int i = ColliedObjectindex + 1; i < DrageObjectIndex; i++)
+                    {
 
-                    AppsMainParent.transform.GetChild(i).transform.DOLocalMove(AppsMainParent.transform.GetChild(i - 1).transform.localPosition, MoveSpeed);
+                        AppsMainParent.transform.GetChild(i).transform.DOLocalMove(AppsMainParent.transform.GetChild(i - 1).transform.localPosition, MoveSpeed);
+                    }
+                }
+                else 
+                {
+                    if (OpenFolderRef.transform.childCount>0) {
+                        OpenFolderRef.transform.GetChild(ColliedObjectindex).transform.DOLocalMove(finalAppPosition, MoveSpeed);
+                        for (int i = ColliedObjectindex + 1; i < DrageObjectIndex; i++)
+                        {
+
+                            OpenFolderRef.transform.GetChild(i).transform.DOLocalMove(OpenFolderRef.transform.GetChild(i - 1).transform.localPosition, MoveSpeed);
+                        }
+                    }
                 }
             }
             OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = true;
@@ -184,18 +217,42 @@ public class GameHandler : MonoBehaviour
                 AppsMainParent.GetComponent<GridLayoutGroup>().enabled = true;
             });
         }
-      
-        for (int i = 0; i < AppsMainParent.transform.childCount; i++)
+        if (!ColliedObject.GetComponent<TriggerCheck>().InsideFolder)
         {
-            ActivateTriggers(AppsMainParent.transform.GetChild(i).gameObject);
+            for (int i = 0; i < OpenFolderRef.transform.childCount; i++)
+            {
+                DisableTriggers(OpenFolderRef.transform.GetChild(i).gameObject);
+            }
+            Debug.Log("here");
+            for (int i = 0; i < AppsMainParent.transform.childCount; i++)
+            {
+                ActivateTriggers(AppsMainParent.transform.GetChild(i).gameObject);
+            }
+        }
+        else
+        {
+            StartCoroutine(Waiting());
+            for (int i = 0; i < OpenFolderRef.transform.childCount; i++)
+            {
+                ActivateTriggers(OpenFolderRef.transform.GetChild(i).gameObject);
+            }
         }
         UpdateListIndex(ColliedObject.GetComponent<TriggerCheck>().InsideFolder);
         ColliedObject.GetComponent<UIDrag>().Moving = false;
         DrageObject.GetComponent<UIDrag>().Moving = false;
     }
+    IEnumerator Waiting() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < AppsMainParent.transform.childCount; i++)
+        {
+            DisableTriggers(AppsMainParent.transform.GetChild(i).gameObject);
+        }
+    }
 
     public void UpdateListIndex(bool InsideFolder)
     {
+        Debug.Log(InsideFolder + "  Inside Folder Bool");
         if (InsideFolder)
         {
             InsideFolderApps.Clear();
@@ -796,6 +853,7 @@ public class GameHandler : MonoBehaviour
     //}
     public void ActivateTriggers(GameObject Obj) 
     {
+        Debug.Log("activating Triggers");
         Obj.GetComponent<Collider2D>().enabled = true;
         Collider2D[] Col = Obj.GetComponentsInChildren<Collider2D>();
         foreach (Collider2D c in Col) 
@@ -821,6 +879,7 @@ public class GameHandler : MonoBehaviour
     public void OnSelectProfile(int LeveLNo) 
     {
         GameManager.Instance.LevelNo = LeveLNo;
+        ProfileImage.sprite = ProfileImages[LeveLNo];
         ProfileScreen.SetActive(false);
         Initiate();
     }

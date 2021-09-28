@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Shahzaib.unity
-    guid: cbdd3ad6368c7624d8b3530016a043be
+    path: Assets/Scenes/Gameplay.unity
+    guid: 558614cf64a46024eba21a11c433b8a0
   m_configObjects: {}

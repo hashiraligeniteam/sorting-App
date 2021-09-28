@@ -31,14 +31,14 @@ public class TriggerCheck : MonoBehaviour
             if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == false)
             {
                 Debug.Log("First Drag 1");
-                if (GetComponent<UIDrag>().pointerUp == true && !InsideFolder)
+                if (/*GetComponent<UIDrag>().pointerUp == true*/Middle && !InsideFolder )
                 {
                     Debug.Log("First Drag 2");
                     if (!Folder)
                     {
                         //Create folder
                         Debug.Log("Folder Creation");
-                        if (other.GetComponent<TriggerCheck>().Folder)
+                        if (other.GetComponent<TriggerCheck>().Folder && !other.GetComponent<TriggerCheck>())
                         {
                             Debug.Log("adding in folder");
                             GameHandler.Instance.AddInFolder(gameObject, other.gameObject);
@@ -46,12 +46,13 @@ public class TriggerCheck : MonoBehaviour
                         else
                         {
                             Debug.Log("Create Folder");
-                            if (!other.GetComponent<UIDrag>().Moving)
+                            if (!other.GetComponent<UIDrag>().Moving && !other.GetComponent<TriggerCheck>().InsideFolder)
                             {
                                 Debug.Log(transform.parent.name + " Parent Name " + gameObject.name + " My name");
                                 GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject, this);
                                 other.GetComponent<UIDrag>().Moving = false;
                             }
+                          
                         }
                     }
                 }
@@ -101,10 +102,13 @@ public class TriggerCheck : MonoBehaviour
         {
             Debug.Log("Exit");
             Middle = false;
-            GetComponent<AppAttriutes>().HighLighter.SetActive(false);
-            //GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite; 
-            //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;
+            if (GetComponent<AppAttriutes>())
+            {
+                GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+            }
+                //GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite; 
+                //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;
+            }
         }
-    }
 
 }

@@ -42,6 +42,7 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        GameHandler.Instance.SwapableObject = null;
         gameObject.AddComponent<GraphicRaycaster>();
         GetComponent<Canvas>().overrideSorting = true;
         GetComponent<Canvas>().sortingOrder = 1;
@@ -90,12 +91,12 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
             GameHandler.Instance.FolderScreen.SetActive(false);
             GameHandler.Instance.currentFolderGridClosed = null;
             GameHandler.Instance.UpdateListIndex(false);
-            
+
             foreach (GameObject app in GameHandler.Instance.Apps)
             {
                 GameHandler.Instance.ActivateTriggers(app);
             }
-            
+
         }
         
         GameHandler.Instance.appBeingused = false;
@@ -106,11 +107,11 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
         {
             if (GameHandler.Instance.SwapableObject )
             {
-                if (!GameHandler.Instance.SwapableObject.GetComponent<TriggerCheck>().Folder && !GetComponent<TriggerCheck>().InsideFolder)
+             //   if (!GameHandler.Instance.SwapableObject.GetComponent<TriggerCheck>().Folder  && !GetComponent<TriggerCheck>().InsideFolder)
                 {
                     if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>())
                     {
-                        if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredOnce && GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredTwice)
+                     //   if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredOnce || GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredTwice)
                         {
                             this.gameObject.transform.GetComponentInChildren<SideTrigger>().SwitchApps(GameHandler.Instance.SwapableObject);
                         }

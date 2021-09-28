@@ -47,11 +47,13 @@ public class FolderHandler : MonoBehaviour
 
             foreach (GameObject app in GameHandler.Instance.Apps)
             {
+                Debug.Log("here its playing");
                 GameHandler.Instance.ActivateTriggers(app);
             }
-         
-            GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<Image>().enabled = false;
-            GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<AppAttriutes>().AppsCountImage.SetActive(true);
+            if (GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<Image>()) {
+                GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<Image>().enabled = false;
+                GameHandler.Instance.currentFolderGridClosed.transform.GetChild(3).GetComponent<AppAttriutes>().AppsCountImage.SetActive(true);
+            }
             for (int i=GameHandler.Instance.MaxAppsInFolder+1;i< GameHandler.Instance.currentFolderGridClosed.transform.childCount;i++) 
             {
                 GameHandler.Instance.currentFolderGridClosed.transform.GetChild(i).gameObject.SetActive(false);

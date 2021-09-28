@@ -29,13 +29,68 @@ public class SideTrigger : MonoBehaviour
             }
         }
     }
-
+    int indexNumber;
     private void AssignSwapObject(GameObject other)
     {
         if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
-            (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
+           (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
         {
             GameHandler.Instance.SwapableObject = transform.parent.gameObject;
+            return;
+        }
+        else if (GetComponentInParent<UIDrag>().triggerEnteredOnce)
+        {
+            if (GetComponentInParent<TriggerCheck>().InsideFolder) 
+            {
+                indexNumber = GameHandler.Instance.InsideFolderApps.IndexOf(GetComponentInParent<UIDrag>().gameObject);
+                if (indexNumber !=0)
+                {
+                  //  if (GameHandler.Instance.InsideFolderApps[indexNumber-1].GetComponent<UIDrag>().triggerEnteredTwice)
+                    {
+                        GameHandler.Instance.SwapableObject = GameHandler.Instance.InsideFolderApps[indexNumber-1].gameObject;
+                        return;
+                    }
+                }
+            } 
+            else 
+            {
+                 indexNumber = GameHandler.Instance.Apps.IndexOf(GetComponentInParent<UIDrag>().gameObject);
+                if (indexNumber != 0) 
+                {
+                 //   if (GameHandler.Instance.Apps[indexNumber-1].GetComponent<UIDrag>().triggerEnteredTwice)
+                    {
+                        GameHandler.Instance.SwapableObject = GameHandler.Instance.Apps[indexNumber-1].gameObject;
+                        return;
+                    }
+                }
+            }
+        }
+        else if (GetComponentInParent<UIDrag>().triggerEnteredTwice)
+        {
+            if (GetComponentInParent<TriggerCheck>().InsideFolder)
+            {
+                indexNumber = GameHandler.Instance.InsideFolderApps.IndexOf(GetComponentInParent<UIDrag>().gameObject);
+                if (indexNumber < GameHandler.Instance.InsideFolderApps.Count)
+                {
+                  //  if (GameHandler.Instance.InsideFolderApps[indexNumber].GetComponent<UIDrag>().triggerEnteredTwice)
+                    {
+                        GameHandler.Instance.SwapableObject = GameHandler.Instance.InsideFolderApps[indexNumber].gameObject;
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                indexNumber = GameHandler.Instance.Apps.IndexOf(GetComponentInParent<UIDrag>().gameObject);
+                if (indexNumber < GameHandler.Instance.InsideFolderApps.Count)
+                {
+                    //if (GameHandler.Instance.Apps[indexNumber].GetComponent<UIDrag>().triggerEnteredTwice)
+                    {
+                        GameHandler.Instance.SwapableObject = GameHandler.Instance.Apps[indexNumber].gameObject;
+                        return;
+                    }
+                }
+            }
         }
     }
     public void SwitchApps(GameObject other) 
@@ -55,11 +110,11 @@ public class SideTrigger : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
-          (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
-        {
-            GameHandler.Instance.SwapableObject = null;
-        }
+        //if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
+        //  (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
+        //{
+        //    GameHandler.Instance.SwapableObject = null;
+        //}
         if (GetComponentInParent<UIDrag>())
         {
             if (!GetComponentInParent<TriggerCheck>().Middle)
@@ -71,7 +126,7 @@ public class SideTrigger : MonoBehaviour
     IEnumerator wait(Collider2D other) 
     {
         yield return new WaitForSeconds(0.5f);
-        if (GetComponentInParent<UIDrag>().triggerEnteredOnce && other.gameObject.GetComponentInParent<UIDrag>().triggerEnteredTwice)
+        if (GetComponentInParent<UIDrag>().triggerEnteredOnce || other.gameObject.GetComponentInParent<UIDrag>().triggerEnteredTwice)
         {
             GetComponentInParent<UIDrag>().triggerEnteredOnce = false;
             GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
