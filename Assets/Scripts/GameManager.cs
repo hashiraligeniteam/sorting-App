@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager 
 {
     private static GameManager _Instance;
-    public int LevelNo;
+    public int LevelNo = 0;
     public float score;
     public bool Restart = false;
     public bool Next = false;
@@ -13,7 +13,7 @@ public class GameManager
     {
         get
         {
-            if (_Instance ==null) 
+            if (_Instance == null) 
             {
                 _Instance = new GameManager();
             }

@@ -37,6 +37,7 @@ public class Levels
     public ScoreState[] scoreSequence;
     public int ScoreToComplete;
     public string ObjectiveText;
+    public bool DummyApps;
 }
 public class LevelHandler : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class LevelHandler : MonoBehaviour
     public Levels[] _levels;
     public List<string> filePath;
     public static LevelHandler Instance;
+    public int TotalNumberAppsExitInScreen;
 
     public void Awake()
     {

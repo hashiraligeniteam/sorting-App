@@ -66,6 +66,14 @@ public class GameHandler : MonoBehaviour
     public Image ProfileImage;
     public Image ProgressBar;
 
+    [Header("InfoScreen")]
+    public GameObject InfoScreen;
+    public Text InfoScreenAppName;
+    public Text InfoScreenColor;
+    public Text InfoScreenCreator;
+    public Text InfoScreenCategory;
+    public Image APPImage;
+
 
 
     private void Awake()
@@ -77,6 +85,7 @@ public class GameHandler : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(GameManager.Instance.LevelNo + " MF level");
         if (GameManager.Instance.Next)
         {
             MainScreen.SetActive(false);
@@ -84,6 +93,7 @@ public class GameHandler : MonoBehaviour
         }
         if (GameManager.Instance.Restart)
         {
+            Debug.Log("here Restart");
             MainScreen.SetActive(false);
             ProfileScreen.SetActive(false);
             Initiate();
@@ -94,19 +104,41 @@ public class GameHandler : MonoBehaviour
     public void Initiate()
     {
         ObjectiveText.text = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].ObjectiveText + " " +LevelHandler.Instance._levels[GameManager.Instance.LevelNo].ScoreToComplete;
+       
         for (int i = 0; i < LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps.Length; i++)
         {
             app = Instantiate(appPrefab);
             app.transform.SetParent(AppsMainParent.transform);
-            app.GetComponent<AppAttriutes>().AppName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppName;
-            app.GetComponent<AppAttriutes>().ColorName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppColor;
-            app.GetComponent<AppAttriutes>().AppCatagory = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].Catagory;
-            app.GetComponent<Image>().sprite = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppImage;
-            app.GetComponent<AppAttriutes>().ShowText();
-
+            if (app.GetComponent<AppAttriutes>()) 
+            {
+                app.GetComponent<AppAttriutes>().AppName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppName;
+                app.GetComponent<AppAttriutes>().ColorName = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppColor;
+                app.GetComponent<AppAttriutes>().AppCatagory = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].Catagory;
+                app.GetComponent<AppAttriutes>().Creator = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].CompanyName;
+                app.GetComponent<Image>().sprite = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppImage;
+                app.GetComponent<AppAttriutes>().ShowText();
+                app.GetComponent<AppAttriutes>().AppSprite = LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps[i].AppImage;
+            }
+            
             app.transform.localScale = Vector3.one;
             Apps.Add(app);
         }
+        //Empty Cells Logic
+        //if (LevelHandler.Instance._levels[GameManager.Instance.LevelNo].DummyApps)
+        //{
+        //    int TotalRemainingApps = LevelHandler.Instance.TotalNumberAppsExitInScreen - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].Apps.Length;
+        //    Debug.Log(TotalRemainingApps + " Dummy Apps Count");
+        //    for (int i = 0; i < TotalRemainingApps; i++)
+        //    {
+        //        app = Instantiate(appPrefab);
+        //        app.transform.SetParent(AppsMainParent.transform);
+        //        app.GetComponent<UIDrag>().IsEmpty = true;
+        //        app.GetComponent<Image>().enabled = false;
+                
+        //        app.transform.localScale = Vector3.one;
+        //        Apps.Add(app);
+        //    }
+        //}
         GameManager.Instance.score = 0;
     }
 
@@ -371,20 +403,20 @@ public class GameHandler : MonoBehaviour
                 }
             }
         }
-
+        GameManager.Instance.score = GameManager.Instance.score / 2;
         scoreText.text = GameManager.Instance.score.ToString();
         ProgressBar.fillAmount = (GameManager.Instance.score / LevelHandler.Instance._levels[GameManager.Instance.LevelNo].ScoreToComplete);
         StartCoroutine(Wait());
     }
     IEnumerator Wait() 
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.5f);
         if (GameManager.Instance.score >= LevelHandler.Instance._levels[GameManager.Instance.LevelNo].ScoreToComplete)
         {
             LevelCompleteScreen.SetActive(true);
         }
     }
-
+    //appList[index].GetComponent<LinkingRelation>().OnLeft(index);
     public void ScoreByName(int index,List<GameObject> appList)
     {
         string currentColor = appList[index].GetComponent<AppAttriutes>().AppName;
@@ -409,6 +441,7 @@ public class GameHandler : MonoBehaviour
                      //   Debug.Log("Score By Name Added");
                         //Okay boss
                         AddScore();
+                        appList[index].GetComponent<LinkingRelation>().OnLeft(index);
                       
                         break;
                     }
@@ -445,7 +478,8 @@ public class GameHandler : MonoBehaviour
                     {
                         //score added
                         AddScore();
-                       // Debug.Log("Score By Name Added");
+                        appList[index].GetComponent<LinkingRelation>().OnRight(index);
+                        // Debug.Log("Score By Name Added");
                         break;
                     }
                 }
@@ -469,7 +503,7 @@ public class GameHandler : MonoBehaviour
                        // Debug.Log("Score By Name Added");
                         //score added
                         AddScore();
-                      
+                        appList[index].GetComponent<LinkingRelation>().OnUp(index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                         break;
                     }
                     else if (currentTemp[i] < nextTemp[i])
@@ -508,7 +542,7 @@ public class GameHandler : MonoBehaviour
                     {
                         //score added
                         AddScore();
-                      
+                        appList[index].GetComponent<LinkingRelation>().OnDown(index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                         break;
                     }
                 }
@@ -533,7 +567,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
-               
+                    appList[index].GetComponent<LinkingRelation>().OnLeft(index);
                 }
                 else
                 {
@@ -558,7 +592,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
-                  
+                    appList[index].GetComponent<LinkingRelation>().OnRight(index);
                 }
                 else
                 {
@@ -584,7 +618,7 @@ public class GameHandler : MonoBehaviour
                   //  Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
-                 
+                    appList[index].GetComponent<LinkingRelation>().OnUp(index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                 }
                 else
                 {
@@ -610,7 +644,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Name Added");
                     //Okay boss
                     AddScore();
-                    
+                    appList[index].GetComponent<LinkingRelation>().OnDown(index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                 }
                 else
                 {
@@ -640,7 +674,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
-                   
+                    appList[index].GetComponent<LinkingRelation>().OnLeft(index);
                 }
                 else
                 {
@@ -664,7 +698,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
-                  
+                    appList[index].GetComponent<LinkingRelation>().OnRight(index);
                 }
                 else
                 {
@@ -689,7 +723,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
-                 
+                    appList[index].GetComponent<LinkingRelation>().OnUp(index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                 }
                 else
                 {
@@ -715,7 +749,7 @@ public class GameHandler : MonoBehaviour
                   //  Debug.Log("Score By Creator Added");
                     //Okay boss
                     AddScore();
-                  
+                    appList[index].GetComponent<LinkingRelation>().OnDown(index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                 }
                 else
                 {
@@ -745,7 +779,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
-                   
+                    appList[index].GetComponent<LinkingRelation>().OnLeft(index);
                 }
                 else
                 {
@@ -770,7 +804,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
-                  
+                    appList[index].GetComponent<LinkingRelation>().OnRight(index);
                 }
                 else
                 {
@@ -795,7 +829,7 @@ public class GameHandler : MonoBehaviour
                    // Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
-                  
+                    appList[index].GetComponent<LinkingRelation>().OnUp(index - LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                 }
                 else
                 {
@@ -821,7 +855,7 @@ public class GameHandler : MonoBehaviour
                     //Debug.Log("Score By Category Added");
                     //Okay boss
                     AddScore();
-                  
+                    appList[index].GetComponent<LinkingRelation>().OnDown(index + LevelHandler.Instance._levels[GameManager.Instance.LevelNo].col);
                 }
                 else
                 {
@@ -891,6 +925,7 @@ public class GameHandler : MonoBehaviour
     public void OnNext()
     {
         GameManager.Instance.Next = true;
+        GameManager.Instance.LevelNo +=1;
         SceneManager.LoadScene("Gameplay");
     }
 
@@ -900,4 +935,12 @@ public class GameHandler : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         Destroy(_Canvas);
     }
+    public void CloseRealtion() 
+    {
+        for (int i =0;i<Apps.Count;i++)
+        {
+            Apps[i].GetComponent<LinkingRelation>().Close();
+        }
+    }
+    
 }

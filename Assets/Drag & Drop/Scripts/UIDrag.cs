@@ -15,6 +15,8 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
     public bool triggerEnteredOnce;
     public bool triggerEnteredTwice;
     public bool Moving;
+    //Empty cell logic
+   // public bool IsEmpty;
 
 
 
@@ -24,11 +26,14 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
     }
     public void OnDrag(PointerEventData eventData)
     {
-        //GameHandler.Instance.Dargging = true;
-        transform.position = Input.mousePosition - diffPosition;
-        Drag = true;
-        Moving = true;
-        GameHandler.Instance.DraggedObject = this.gameObject;
+        //if (!IsEmpty)
+        {
+            //GameHandler.Instance.Dargging = true;
+            transform.position = Input.mousePosition - diffPosition;
+            Drag = true;
+            Moving = true;
+            GameHandler.Instance.DraggedObject = this.gameObject;
+        }
     
         //Debug.Log(Input.mousePosition);
     }
@@ -42,91 +47,109 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        GameHandler.Instance.SwapableObject = null;
-        gameObject.AddComponent<GraphicRaycaster>();
-        GetComponent<Canvas>().overrideSorting = true;
-        GetComponent<Canvas>().sortingOrder = 1;
-        GameHandler.Instance.appBeingused = true;
-        pointerUp = false;
-        startPosition = transform.position;
-        diffPosition = Input.mousePosition - startPosition;
-        EventSystem.current.SetSelectedGameObject(gameObject);
+      //  if (!IsEmpty) 
+        {
+            GameHandler.Instance.CloseRealtion();
+            GameHandler.Instance.SwapableObject = null;
+            gameObject.AddComponent<GraphicRaycaster>();
+            GetComponent<Canvas>().overrideSorting = true;
+            GetComponent<Canvas>().sortingOrder = 1;
+            GameHandler.Instance.appBeingused = true;
+            pointerUp = false;
+            startPosition = transform.position;
+            diffPosition = Input.mousePosition - startPosition;
+            EventSystem.current.SetSelectedGameObject(gameObject);
 
-        GameHandler.Instance.finalAppPosition = transform.localPosition;
+            GameHandler.Instance.finalAppPosition = transform.localPosition;
+
+        }
        
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        GameHandler.Instance.StartCoroutine(GameHandler.Instance.DestroyingObjects(GetComponent<GraphicRaycaster>(),GetComponent<Canvas>()));
-        Drag = false;
-        pointerUp = true;
-        
-      //  Moving = false;
-        if (GetComponent<TriggerCheck>().InsideFolder && !RectTransformUtility.RectangleContainsScreenPoint(GameHandler.Instance.OpenFolderRef.GetComponent<Image>().rectTransform, Input.mousePosition))
+        //if (!IsEmpty)
         {
-            GameHandler.Instance.InsideFolderApps.Remove(this.gameObject);
-            GameHandler.Instance.Apps.Add(this.gameObject);
-            transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
-            if (GameHandler.Instance.OpenFolderRef.transform.childCount  == 1)
-            {
-                GameHandler.Instance.InsideFolderApps.Remove(GameHandler.Instance.OpenFolderRef.transform.GetChild(0).gameObject);
-                GameHandler.Instance.Apps.Add(GameHandler.Instance.OpenFolderRef.transform.GetChild(0).gameObject);
-                GameHandler.Instance.OpenFolderRef.transform.GetChild(0).transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
-                GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject.SetActive(false);
-                GameHandler.Instance.currentFolderGridClosed.transform.parent.SetParent(GameHandler.Instance.transform);
-             
-                DestroyImmediate(GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject);
-            }
-            
-            int folderChildCount = GameHandler.Instance.OpenFolderRef.transform.childCount;
+            GameHandler.Instance.StartCoroutine(GameHandler.Instance.DestroyingObjects(GetComponent<GraphicRaycaster>(), GetComponent<Canvas>()));
+            Drag = false;
+            pointerUp = true;
 
-            for (int i = 0; i < folderChildCount; i++)
+            //  Moving = false;
+            if (GetComponent<TriggerCheck>().InsideFolder && !RectTransformUtility.RectangleContainsScreenPoint(GameHandler.Instance.OpenFolderRef.GetComponent<Image>().rectTransform, Input.mousePosition))
             {
-                Destroy(GameHandler.Instance.OpenFolderRef.transform.GetChild(0).GetComponent<UIDrag>());
-                GameHandler.Instance.OpenFolderRef.transform.GetChild(0).SetParent(GameHandler.Instance.currentFolderGridClosed.transform);
-                GameHandler.Instance.DisableTriggers(GameHandler.Instance.currentFolderGridClosed.transform.GetChild(i).gameObject);
-            }
-
-            GameHandler.Instance.InsideFolderApps.Clear();
-            GameHandler.Instance.FolderScreen.SetActive(false);
-            GameHandler.Instance.currentFolderGridClosed = null;
-            GameHandler.Instance.UpdateListIndex(false);
-
-            foreach (GameObject app in GameHandler.Instance.Apps)
-            {
-                GameHandler.Instance.ActivateTriggers(app);
-            }
-
-        }
-        
-        GameHandler.Instance.appBeingused = false;
-       
-       
-        GameHandler.Instance.CheckScore(GetComponent<TriggerCheck>().InsideFolder);
-        if (GetComponent<UIDrag>())
-        {
-            if (GameHandler.Instance.SwapableObject )
-            {
-             //   if (!GameHandler.Instance.SwapableObject.GetComponent<TriggerCheck>().Folder  && !GetComponent<TriggerCheck>().InsideFolder)
+                GameHandler.Instance.InsideFolderApps.Remove(this.gameObject);
+                GameHandler.Instance.Apps.Add(this.gameObject);
+                transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
+                if (GameHandler.Instance.OpenFolderRef.transform.childCount == 1)
                 {
-                    if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>())
-                    {
-                     //   if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredOnce || GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredTwice)
-                        {
-                            this.gameObject.transform.GetComponentInChildren<SideTrigger>().SwitchApps(GameHandler.Instance.SwapableObject);
-                        }
-                  
-                    }
-                
+                    GameHandler.Instance.InsideFolderApps.Remove(GameHandler.Instance.OpenFolderRef.transform.GetChild(0).gameObject);
+                    GameHandler.Instance.Apps.Add(GameHandler.Instance.OpenFolderRef.transform.GetChild(0).gameObject);
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(0).transform.SetParent(GameHandler.Instance.AppsMainParent.transform);
+                    GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject.SetActive(false);
+                    GameHandler.Instance.currentFolderGridClosed.transform.parent.SetParent(GameHandler.Instance.transform);
+
+                    DestroyImmediate(GameHandler.Instance.currentFolderGridClosed.transform.parent.gameObject);
                 }
-           
+
+                int folderChildCount = GameHandler.Instance.OpenFolderRef.transform.childCount;
+
+                for (int i = 0; i < folderChildCount; i++)
+                {
+                    Destroy(GameHandler.Instance.OpenFolderRef.transform.GetChild(0).GetComponent<UIDrag>());
+                    GameHandler.Instance.OpenFolderRef.transform.GetChild(0).SetParent(GameHandler.Instance.currentFolderGridClosed.transform);
+                    GameHandler.Instance.DisableTriggers(GameHandler.Instance.currentFolderGridClosed.transform.GetChild(i).gameObject);
+                }
+
+                GameHandler.Instance.InsideFolderApps.Clear();
+                GameHandler.Instance.FolderScreen.SetActive(false);
+                GameHandler.Instance.currentFolderGridClosed = null;
+                GameHandler.Instance.UpdateListIndex(false);
+
+                foreach (GameObject app in GameHandler.Instance.Apps)
+                {
+                    GameHandler.Instance.ActivateTriggers(app);
+                }
 
             }
-           
 
+            GameHandler.Instance.appBeingused = false;
+
+
+           
+            if (GetComponent<UIDrag>())
+            {
+                if (GameHandler.Instance.SwapableObject)
+                {
+                    //   if (!GameHandler.Instance.SwapableObject.GetComponent<TriggerCheck>().Folder  && !GetComponent<TriggerCheck>().InsideFolder)
+                    {
+                        if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>())
+                        {
+                            //   if (GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredOnce || GameHandler.Instance.SwapableObject.GetComponent<UIDrag>().triggerEnteredTwice)
+                            {
+                                this.gameObject.transform.GetComponentInChildren<SideTrigger>().SwitchApps(GameHandler.Instance.SwapableObject);
+                            }
+
+                        }
+
+                    }
+
+
+                }
+                else 
+                {
+                    GameHandler.Instance.InfoScreenAppName.text = GetComponent<AppAttriutes>().AppName;
+                    GameHandler.Instance.InfoScreenColor.text = GetComponent<AppAttriutes>().ColorName;
+                    GameHandler.Instance.InfoScreenCategory.text = GetComponent<AppAttriutes>().AppCatagory;
+                    GameHandler.Instance.InfoScreenCreator.text = GetComponent<AppAttriutes>().Creator;
+                    GameHandler.Instance.APPImage.sprite = GetComponent<AppAttriutes>().AppSprite;
+                    GameHandler.Instance.InfoScreen.SetActive(true);
+                }
+
+
+            }
+
+           
+            GameHandler.Instance.CheckScore(GetComponent<TriggerCheck>().InsideFolder);
         }
-     
-        StartCoroutine(ResetGrids());
     }
 
     IEnumerator ResetGrids()
@@ -139,6 +162,8 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
         GameHandler.Instance.OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = true;
         GameHandler.Instance.AppsMainParent.GetComponent<GridLayoutGroup>().enabled = true;
         Moving = false;
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(ResetGrids());
     }
     
 

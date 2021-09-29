@@ -430,7 +430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1265, y: -23.999878}
+  m_AnchoredPosition: {x: 1265, y: -24}
   m_SizeDelta: {x: 0, y: -502.85254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127210435
@@ -759,6 +759,87 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!1 &229052566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 229052567}
+  - component: {fileID: 229052569}
+  - component: {fileID: 229052568}
+  m_Layer: 5
+  m_Name: bg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &229052567
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229052566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_Children:
+  - {fileID: 337289929}
+  - {fileID: 1951913388}
+  - {fileID: 934055636}
+  - {fileID: 361420455}
+  - {fileID: 1488783154}
+  - {fileID: 592074066}
+  - {fileID: 1130252265}
+  m_Father: {fileID: 1871049335}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1005, y: 1053}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &229052568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229052566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9f0b266b0f9c27a40bcad8f750c6e6ee, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &229052569
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229052566}
+  m_CullTransparentMesh: 0
 --- !u!1 &267143444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1139,213 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321485476}
   m_CullTransparentMesh: 0
+--- !u!1 &337289928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337289929}
+  - component: {fileID: 337289931}
+  - component: {fileID: 337289930}
+  - component: {fileID: 337289932}
+  m_Layer: 5
+  m_Name: Close
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &337289929
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337289928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_Children: []
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -101, y: -97}
+  m_SizeDelta: {x: 72, y: 72}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &337289930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337289928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e7882baf5491bcb4fa9213ef666cf26e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &337289931
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337289928}
+  m_CullTransparentMesh: 0
+--- !u!114 &337289932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337289928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 337289930}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1871049334}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &361420454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361420455}
+  - component: {fileID: 361420457}
+  - component: {fileID: 361420456}
+  m_Layer: 5
+  m_Name: App Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &361420455
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361420454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &361420456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361420454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: APP INFO
+--- !u!222 &361420457
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361420454}
+  m_CullTransparentMesh: 0
 --- !u!1 &445877320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESTART
+  m_Text: NEXT
 --- !u!222 &460141178
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1296,7 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1955,7 +2243,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEXT
+  m_Text: RESTART
 --- !u!222 &580014528
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1963,6 +2251,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580014524}
+  m_CullTransparentMesh: 0
+--- !u!1 &592074065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592074066}
+  - component: {fileID: 592074068}
+  - component: {fileID: 592074067}
+  m_Layer: 5
+  m_Name: Creator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &592074066
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592074065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1482961069}
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -257, y: -324}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &592074067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592074065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Creator :'
+--- !u!222 &592074068
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592074065}
   m_CullTransparentMesh: 0
 --- !u!1 &624828456
 GameObject:
@@ -2405,7 +2772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.9999695, y: -2}
+  m_AnchoredPosition: {x: -5.0000916, y: -2}
   m_SizeDelta: {x: -302.49902, y: -811.8262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791058416
@@ -2553,7 +2920,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1323378852}
-        m_MethodName: OnRestart
+        m_MethodName: OnNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2742,7 +3109,7 @@ RectTransform:
   - {fileID: 290832460}
   - {fileID: 855358040}
   m_Father: {fileID: 2013784065}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2970,12 +3337,12 @@ RectTransform:
   m_Children:
   - {fileID: 1379427660}
   - {fileID: 1083918398}
-  m_Father: {fileID: 2013784065}
-  m_RootOrder: 2
+  m_Father: {fileID: 1012363758}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 96.791, y: -166}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 61, y: -26}
   m_SizeDelta: {x: 374.61182, y: 33.13694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &854963091
@@ -2997,7 +3364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32aac11eefb622a4f8b4d087c78097e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 328c461cd93b5f04d9b05a3d4e4c1f64, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3238,7 +3605,7 @@ RectTransform:
   - {fileID: 1852426265}
   - {fileID: 1921309096}
   m_Father: {fileID: 2013784065}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3281,6 +3648,84 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883654534}
+  m_CullTransparentMesh: 0
+--- !u!1 &885761324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 885761325}
+  - component: {fileID: 885761327}
+  - component: {fileID: 885761326}
+  m_Layer: 5
+  m_Name: Category (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &885761325
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885761324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1130252265}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 507, y: 0}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &885761326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885761324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Category :'
+--- !u!222 &885761327
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885761324}
   m_CullTransparentMesh: 0
 --- !u!1 &922064740
 GameObject:
@@ -3359,6 +3804,80 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922064740}
+  m_CullTransparentMesh: 0
+--- !u!1 &934055635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 934055636}
+  - component: {fileID: 934055638}
+  - component: {fileID: 934055637}
+  m_Layer: 5
+  m_Name: App Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &934055636
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934055635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -38, y: 162}
+  m_SizeDelta: {x: 180, y: 180}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &934055637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934055635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cc67d63f7668cb948ad505d49366206d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &934055638
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934055635}
   m_CullTransparentMesh: 0
 --- !u!1 &963194225
 GameObject:
@@ -3693,7 +4212,7 @@ RectTransform:
   - {fileID: 67009474}
   - {fileID: 976465531}
   m_Father: {fileID: 2013784065}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3973,6 +4492,82 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!1 &1012363757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1012363758}
+  - component: {fileID: 1012363760}
+  - component: {fileID: 1012363759}
+  m_Layer: 5
+  m_Name: Bar back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1012363758
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012363757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_Children:
+  - {fileID: 1263131322}
+  - {fileID: 854963090}
+  m_Father: {fileID: 2013784065}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -110}
+  m_SizeDelta: {x: 809, y: 220}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1012363759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012363757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dbf34321438d5c44992b37c83b92330e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1012363760
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012363757}
+  m_CullTransparentMesh: 0
 --- !u!1 &1012586959
 GameObject:
   m_ObjectHideFlags: 0
@@ -4232,7 +4827,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -50.6, y: 0.0000014305115}
+  m_AnchoredPosition: {x: -50.6, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083918399
@@ -4271,6 +4866,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083918397}
+  m_CullTransparentMesh: 0
+--- !u!1 &1130252264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130252265}
+  - component: {fileID: 1130252267}
+  - component: {fileID: 1130252266}
+  m_Layer: 5
+  m_Name: Category
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1130252265
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130252264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 885761325}
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -257, y: -437}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1130252266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130252264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Category :'
+--- !u!222 &1130252267
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130252264}
   m_CullTransparentMesh: 0
 --- !u!1 &1194209997
 GameObject:
@@ -4457,17 +5131,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263131321}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 826606476}
-  m_Father: {fileID: 2013784065}
-  m_RootOrder: 3
+  m_Father: {fileID: 1012363758}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -75, y: -33.699707}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -25, y: 99}
   m_SizeDelta: {x: 218.33557, y: 98.48071}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1263131323
@@ -4545,383 +5219,269 @@ MonoBehaviour:
   - LevelNo: 0
     Description: 
     Apps:
-    - AppImage: {fileID: 21300000, guid: cf9eba661a2e15044a81b07ff7c0ab94, type: 3}
-      AppName: "ZMail\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White\r"
-      Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 72346de3db32af34ea2bece0b1481aef, type: 3}
-      AppName: "ZDocs\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White \r"
-      Catagory: "File Viewer\r"
-    - AppImage: {fileID: 21300000, guid: 71a45561b501e0b4ebb4309d2fb853dd, type: 3}
-      AppName: "ZMap\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White\r"
-      Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 2583771a039a61146998d2475dce7134, type: 3}
-      AppName: "ZDrive\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White\r"
-      Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: fc06ae6eed5a6a54a943ed43448018dc, type: 3}
-      AppName: "TrickyPedia\r"
-      CompanyName: "SpyFactory Inc\r"
-      AppColor: "Purple\r"
-      Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: 8b9387e22f978b64a95a4f993d95fbcc, type: 3}
+    - AppImage: {fileID: 21300000, guid: 1ff86aa9f73ac7c4aaa83127e4917ee4, type: 3}
       AppName: "PropertyAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink \r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: e08ed7ee6fd8cd24c91f06d85ac8b2e2, type: 3}
+    - AppImage: {fileID: 21300000, guid: 9e91249736ae1cc4abfb91624ed99d8d, type: 3}
       AppName: "StockAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink\r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: 2a143d7d07623884780a7ea96fc73015, type: 3}
+    - AppImage: {fileID: 21300000, guid: 8b6e519c5c96d134798e898dd445d14e, type: 3}
       AppName: "Pandora\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Purple\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: fd84c49ff13e36148907c6588e0ef692, type: 3}
+    - AppImage: {fileID: 21300000, guid: fd64e76450498b441b8b014a499fa622, type: 3}
       AppName: "ExtraGram\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Red\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: 5583ee69899b73141816cdba81af8b7b, type: 3}
+    - AppImage: {fileID: 21300000, guid: e54dfee227a93894fac1d4fe167b44c7, type: 3}
       AppName: "SUBG\r"
       CompanyName: "MarcoHard\r"
       AppColor: "Brown\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 2f8744e1593eee443ad27ce994ccfb2e, type: 3}
+    - AppImage: {fileID: 21300000, guid: 806d76714444454498e4bc2cac4e5a9a, type: 3}
       AppName: "Atlanta\r"
       CompanyName: "Amazon Inc\r"
       AppColor: "Black\r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: d30cab512bc3ad34fbf6ce47b7ce9512, type: 3}
-      AppName: "S.C.A.M Bank\r"
-      CompanyName: "BitChance\r"
-      AppColor: "Yellow\r"
-      Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: a7078a824242de741a20b977b500084a, type: 3}
-      AppName: "Calculator\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Red\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: f5788772a5936ee4da317665a4dbaeb2, type: 3}
-      AppName: "Calendar\r"
-      CompanyName: "Native Inc\r"
+    - AppImage: {fileID: 21300000, guid: 6ea8a4c1d5a848b449951a26f9479042, type: 3}
+      AppName: "File Manager\r"
+      CompanyName: "GetFix Inc\r"
       AppColor: "Brown\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: e6b959eff770a0e4db504c4b047025b7, type: 3}
-      AppName: "Alarm\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Red\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: 9c29469b18482b44386f301a88337ab6, type: 3}
-      AppName: "Settings\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Grey\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 77fbdc3ad5a6fe444aed3cebdf6ba70d, type: 3}
-      AppName: "Gallery\r"
-      CompanyName: "GetFix Inc\r"
-      AppColor: "Red\r"
-      Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 168315b3bcb1e7e429d29c699ab45a7c, type: 3}
-      AppName: "Caller\r"
-      CompanyName: "GetFix Inc\r"
-      AppColor: "Green\r"
-      Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: d9cec48f2d6b9504dbdbe8d7cbb2e882, type: 3}
-      AppName: "Voice Recorder\r"
-      CompanyName: "GetFix Inc\r"
-      AppColor: "Grey\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: 3bc24ba052c6fde488c924e2babca9be, type: 3}
+    - AppImage: {fileID: 21300000, guid: 315ebe9001fee7a4c9a647c51e3e2f17, type: 3}
       AppName: "Metronome\r"
       CompanyName: GetFix Inc
       AppColor: "Grey\r"
       Catagory: "Utility\r"
     col: 4
-    scoreSequence: 01000000
-    ScoreToComplete: 30
-    ObjectiveText: 'Try To Arrange Apps in Alphabetic Order And try to Achive Score  '
-  - LevelNo: 1
+    scoreSequence: 0100000002000000
+    ScoreToComplete: 6
+    ObjectiveText: 'Try To Arrange Apps By Name Order & by Color And try to Achieve
+      Score  '
+    DummyApps: 0
+  - LevelNo: 0
     Description: 
     Apps:
-    - AppImage: {fileID: 21300000, guid: 4e614caa2f7df1648a88efb72aa7efac, type: 3}
+    - AppImage: {fileID: 21300000, guid: 42f58b590785243448355a54d99e16a1, type: 3}
       AppName: "SpamChat\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 1acbf28a9966ac6489c1d942253334e6, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6423315ac2d3d2b458b198f749a2ba17, type: 3}
       AppName: "FlipFlop\r"
       CompanyName: "BitChance\r"
       AppColor: "Black\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: fd84c49ff13e36148907c6588e0ef692, type: 3}
+    - AppImage: {fileID: 21300000, guid: fd64e76450498b441b8b014a499fa622, type: 3}
       AppName: "ExtraGram\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Red\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: cf9eba661a2e15044a81b07ff7c0ab94, type: 3}
-      AppName: "ZMail\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White\r"
-      Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 0211d7fb97ac92b4d95ac5260841afa9, type: 3}
-      AppName: "Zpay\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White \r"
-      Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: ec8e7b5841c250e4f85db1cd727c6615, type: 3}
+    - AppImage: {fileID: 21300000, guid: 974b40707ed6b6e429d128d83cd8484f, type: 3}
       AppName: "Spender\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Pink\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: 47b392c6b8c1e144ba08fc8d73c83309, type: 3}
-      AppName: "NewTube\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "Red\r"
-      Catagory: "MultiMedia\r"
-    - AppImage: {fileID: 21300000, guid: a8c2a63563f8ffe4b9239c71b79f86ae, type: 3}
-      AppName: "ClothesAddict\r"
-      CompanyName: "GetFix Inc\r"
-      AppColor: "Pink\r"
-      Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: 4be0edc2a51fbdc409a9d9283a590247, type: 3}
+    - AppImage: {fileID: 21300000, guid: 5528a9f93ed105c44866e8966dfb8d60, type: 3}
       AppName: "NothingMuch\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: f11c92beaad44be459edc188dd1bc193, type: 3}
+    - AppImage: {fileID: 21300000, guid: 2463715d1a705fb408e846860944d2b0, type: 3}
       AppName: "GetFlix\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Red\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: a3f3de96257171144b797e882606a361, type: 3}
+    - AppImage: {fileID: 21300000, guid: be9d63da087fec14abec41f1e183f6a7, type: 3}
       AppName: "Stupor\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Black\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 9b0713734e275ea4ba1570988eb27592, type: 3}
+    - AppImage: {fileID: 21300000, guid: 74f2b348b953d844ea2a7518020da8d9, type: 3}
       AppName: "Money Flush\r"
       CompanyName: "Moyan\r"
       AppColor: "Red\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: a7078a824242de741a20b977b500084a, type: 3}
-      AppName: "Calculator\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Red\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: e6b959eff770a0e4db504c4b047025b7, type: 3}
-      AppName: "Alarm\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Red\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: 9c29469b18482b44386f301a88337ab6, type: 3}
-      AppName: "Settings\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Grey\r"
-      Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 77fbdc3ad5a6fe444aed3cebdf6ba70d, type: 3}
-      AppName: "Gallery\r"
-      CompanyName: "GetFix Inc\r"
-      AppColor: "Red\r"
-      Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 168315b3bcb1e7e429d29c699ab45a7c, type: 3}
+    - AppImage: {fileID: 21300000, guid: 0a130205f5c4e2140a998391524e3515, type: 3}
       AppName: "Caller\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Green\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: d9cec48f2d6b9504dbdbe8d7cbb2e882, type: 3}
+    - AppImage: {fileID: 21300000, guid: 58cb2e94ca8784c418f9c7fcfa87a4f0, type: 3}
       AppName: "Voice Recorder\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Grey\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: af480dfec2e162f4ba6577e9475a1814, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6ea8a4c1d5a848b449951a26f9479042, type: 3}
       AppName: "File Manager\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Brown\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 3bc24ba052c6fde488c924e2babca9be, type: 3}
+    - AppImage: {fileID: 21300000, guid: 315ebe9001fee7a4c9a647c51e3e2f17, type: 3}
       AppName: "Metronome\r"
       CompanyName: GetFix Inc
       AppColor: "Grey\r"
       Catagory: "Utility\r"
     col: 4
-    scoreSequence: 01000000
-    ScoreToComplete: 35
-    ObjectiveText: 'Try To Arrange Apps in Alphabetic Order And try to Achive Score  '
-  - LevelNo: 2
+    scoreSequence: 010000000200000003000000
+    ScoreToComplete: 8
+    ObjectiveText: 'Try To Arrange Apps By Name Order & by Color & by category And
+      try to Achieve Score  '
+    DummyApps: 0
+  - LevelNo: 1
     Description: 
     Apps:
-    - AppImage: {fileID: 21300000, guid: 47b392c6b8c1e144ba08fc8d73c83309, type: 3}
+    - AppImage: {fileID: 21300000, guid: ca8ea5129f54a18458d9cedd33961beb, type: 3}
       AppName: "NewTube\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "Red\r"
       Catagory: "MultiMedia\r"
-    - AppImage: {fileID: 21300000, guid: 1acbf28a9966ac6489c1d942253334e6, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6423315ac2d3d2b458b198f749a2ba17, type: 3}
       AppName: "FlipFlop\r"
       CompanyName: "BitChance\r"
       AppColor: "Black\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: 2583771a039a61146998d2475dce7134, type: 3}
-      AppName: "ZDrive\r"
-      CompanyName: "GoogolFlex\r"
-      AppColor: "White\r"
-      Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: 71a45561b501e0b4ebb4309d2fb853dd, type: 3}
+    - AppImage: {fileID: 21300000, guid: a2510901acaa1df42ac1f49dd96c6611, type: 3}
       AppName: "Zmap\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: f0686b3634950154c8d57edaebb3eeb0, type: 3}
+    - AppImage: {fileID: 21300000, guid: 70be5981469145b48ba63b449e703992, type: 3}
       AppName: "TimeCraft\r"
       CompanyName: "Moyan\r"
       AppColor: "Green\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 5583ee69899b73141816cdba81af8b7b, type: 3}
+    - AppImage: {fileID: 21300000, guid: e54dfee227a93894fac1d4fe167b44c7, type: 3}
       AppName: "SUBG\r"
       CompanyName: "MarcoHard\r"
       AppColor: "Brown\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 9b0713734e275ea4ba1570988eb27592, type: 3}
-      AppName: "MoneyFlush\r"
-      CompanyName: "Moyan\r"
-      AppColor: "Red\r"
-      Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 04b5384e11fb8d44a8e3978bea38b622, type: 3}
+    - AppImage: {fileID: 21300000, guid: 3a3180770ae431f459120b27f8cd578f, type: 3}
       AppName: "Tweak\r"
       CompanyName: "BitChance\r"
       AppColor: "Purple\r"
       Catagory: "MultiMedia\r"
-    - AppImage: {fileID: 21300000, guid: 731053d655a95e9438411ba11f218ea0, type: 3}
+    - AppImage: {fileID: 21300000, guid: 93c745ebf52cb074898288270523c12b, type: 3}
       AppName: "Fools TD\r"
       CompanyName: "MacroHard\r"
       AppColor: "Green\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 4be0edc2a51fbdc409a9d9283a590247, type: 3}
+    - AppImage: {fileID: 21300000, guid: 5528a9f93ed105c44866e8966dfb8d60, type: 3}
       AppName: "NothingMuch\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 2a143d7d07623884780a7ea96fc73015, type: 3}
+    - AppImage: {fileID: 21300000, guid: 8b6e519c5c96d134798e898dd445d14e, type: 3}
       AppName: "Pandora\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Purple\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: f11c92beaad44be459edc188dd1bc193, type: 3}
+    - AppImage: {fileID: 21300000, guid: 2463715d1a705fb408e846860944d2b0, type: 3}
       AppName: "GetFix\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Red\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: a7078a824242de741a20b977b500084a, type: 3}
-      AppName: "Calculator\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Red\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: f5788772a5936ee4da317665a4dbaeb2, type: 3}
-      AppName: "Calendar\r"
-      CompanyName: "Native Inc\r"
-      AppColor: "Brown\r"
-      Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: e6b959eff770a0e4db504c4b047025b7, type: 3}
+    - AppImage: {fileID: 21300000, guid: c85de3ef77ac56d4aa9ec7599a9d6228, type: 3}
       AppName: "Alarm\r"
       CompanyName: "Native Inc\r"
       AppColor: "Red\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: 2846f27e6d55324469a5424ef21cc21f, type: 3}
+    - AppImage: {fileID: 21300000, guid: 1ad6fa7b40740fb4c9f925d95607c25b, type: 3}
       AppName: "Camera\r"
       CompanyName: "SpyFactory Inc\r"
       AppColor: "Grey\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 9c29469b18482b44386f301a88337ab6, type: 3}
+    - AppImage: {fileID: 21300000, guid: 67a6f562afabf504ba8f7861208352ec, type: 3}
       AppName: "Settings\r"
       CompanyName: "Native Inc\r"
       AppColor: "Grey\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 77fbdc3ad5a6fe444aed3cebdf6ba70d, type: 3}
+    - AppImage: {fileID: 21300000, guid: 401bdd706ce922c4e805ca68b84984c6, type: 3}
       AppName: "Gallery\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Red\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 168315b3bcb1e7e429d29c699ab45a7c, type: 3}
+    - AppImage: {fileID: 21300000, guid: 0a130205f5c4e2140a998391524e3515, type: 3}
       AppName: "Caller\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Green\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 3bc24ba052c6fde488c924e2babca9be, type: 3}
+    - AppImage: {fileID: 21300000, guid: 315ebe9001fee7a4c9a647c51e3e2f17, type: 3}
       AppName: "Metronome\r"
       CompanyName: GetFix Inc
       AppColor: "Grey\r"
       Catagory: "Utility\r"
     col: 4
-    scoreSequence: 01000000
-    ScoreToComplete: 40
-    ObjectiveText: 'Try To Arrange Apps in Alphabetic Order And try to Achive Score  '
-  - LevelNo: 3
+    scoreSequence: 010000000200000003000000
+    ScoreToComplete: 10
+    ObjectiveText: 'Try To Arrange Apps By Name Order & by Color & by category And
+      try to Achieve Score  '
+    DummyApps: 0
+  - LevelNo: 2
     Description: 
     Apps:
-    - AppImage: {fileID: 21300000, guid: 4e614caa2f7df1648a88efb72aa7efac, type: 3}
+    - AppImage: {fileID: 21300000, guid: 42f58b590785243448355a54d99e16a1, type: 3}
       AppName: "SpamChat\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 44b80c43d6f595c418c53ec06a7937e3, type: 3}
+    - AppImage: {fileID: 21300000, guid: bac47a5c21b11cf41823ba2c2545219f, type: 3}
       AppName: "FaceLook\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Blue\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: cf9eba661a2e15044a81b07ff7c0ab94, type: 3}
+    - AppImage: {fileID: 21300000, guid: abb99f8f62a0fb44c9e1df0cc85404a2, type: 3}
       AppName: "Zmail\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 71a45561b501e0b4ebb4309d2fb853dd, type: 3}
+    - AppImage: {fileID: 21300000, guid: a2510901acaa1df42ac1f49dd96c6611, type: 3}
       AppName: "Zmap\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 72346de3db32af34ea2bece0b1481aef, type: 3}
+    - AppImage: {fileID: 21300000, guid: 461a92c15b0d5c5429b9b27ba9cb581d, type: 3}
       AppName: "ZDocs\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White \r"
       Catagory: "File Viewer\r"
-    - AppImage: {fileID: 21300000, guid: ec8e7b5841c250e4f85db1cd727c6615, type: 3}
+    - AppImage: {fileID: 21300000, guid: 0de6bbac872773a459e41edc1e8d23c4, type: 3}
       AppName: "Spender\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Pink\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: 2f8744e1593eee443ad27ce994ccfb2e, type: 3}
+    - AppImage: {fileID: 21300000, guid: 806d76714444454498e4bc2cac4e5a9a, type: 3}
       AppName: "Atlanta\r"
       CompanyName: "Amazon Inc\r"
       AppColor: "Black\r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: 4f20ecb5ad0dfad45b48e668f3423564, type: 3}
+    - AppImage: {fileID: 21300000, guid: d388e0982e2a32149b01d448b40b6da9, type: 3}
       AppName: "FakeNews\r"
       CompanyName: "SpyFactory Inc\r"
       AppColor: "Blue\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: a46e3dc8f139e6640afdb04419ec8123, type: 3}
+    - AppImage: {fileID: 21300000, guid: 42bf2ab5e3fd7b745afa1bb20531ad75, type: 3}
       AppName: "FoodAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink\r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: 4a7717b5cdebe234a89abfa3f1723740, type: 3}
+    - AppImage: {fileID: 21300000, guid: 2463715d1a705fb408e846860944d2b0, type: 3}
       AppName: "MusicAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink \r"
       Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: a3f3de96257171144b797e882606a361, type: 3}
+    - AppImage: {fileID: 21300000, guid: be9d63da087fec14abec41f1e183f6a7, type: 3}
       AppName: "Stupor\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Black\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: d30cab512bc3ad34fbf6ce47b7ce9512, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6c85b7c5632642748bdcd45795173dac, type: 3}
       AppName: "S.C.A.M Bank\r"
       CompanyName: "BitChance\r"
       AppColor: "Yellow\r"
@@ -4931,259 +5491,265 @@ MonoBehaviour:
       CompanyName: "Native Inc\r"
       AppColor: "Red\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: f5788772a5936ee4da317665a4dbaeb2, type: 3}
+    - AppImage: {fileID: 21300000, guid: beb83f8ad497ae44bab51ae75cf8f657, type: 3}
       AppName: "Calendar\r"
       CompanyName: "Native Inc\r"
       AppColor: "Brown\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: e6b959eff770a0e4db504c4b047025b7, type: 3}
+    - AppImage: {fileID: 21300000, guid: c85de3ef77ac56d4aa9ec7599a9d6228, type: 3}
       AppName: "Alarm\r"
       CompanyName: "Native Inc\r"
       AppColor: "Red\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: 2846f27e6d55324469a5424ef21cc21f, type: 3}
+    - AppImage: {fileID: 21300000, guid: 1ad6fa7b40740fb4c9f925d95607c25b, type: 3}
       AppName: "Camera\r"
       CompanyName: "SpyFactory Inc\r"
       AppColor: "Grey\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 168315b3bcb1e7e429d29c699ab45a7c, type: 3}
+    - AppImage: {fileID: 21300000, guid: 0a130205f5c4e2140a998391524e3515, type: 3}
       AppName: "Caller\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Green\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: d9cec48f2d6b9504dbdbe8d7cbb2e882, type: 3}
+    - AppImage: {fileID: 21300000, guid: 58cb2e94ca8784c418f9c7fcfa87a4f0, type: 3}
       AppName: "Voice Recorder\r"
       CompanyName: "Creator: GetFix Inc\r"
       AppColor: "Grey\r"
       Catagory: "Category: Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: af480dfec2e162f4ba6577e9475a1814, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6ea8a4c1d5a848b449951a26f9479042, type: 3}
       AppName: "File Manager\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Brown\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 3bc24ba052c6fde488c924e2babca9be, type: 3}
+    - AppImage: {fileID: 21300000, guid: 315ebe9001fee7a4c9a647c51e3e2f17, type: 3}
       AppName: "Metronome\r"
       CompanyName: GetFix Inc
       AppColor: "Grey\r"
       Catagory: "Utility\r"
     col: 4
-    scoreSequence: 01000000
-    ScoreToComplete: 45
-    ObjectiveText: 'Try To Arrange Apps in Alphabetic Order And try to Achive Score  '
-  - LevelNo: 4
+    scoreSequence: 01000000020000000300000004000000
+    ScoreToComplete: 12
+    ObjectiveText: 'Try To Arrange Apps By Name Order & by Color & by category &
+      by creator And try to Achieve Score  '
+    DummyApps: 0
+  - LevelNo: 3
     Description: 
     Apps:
-    - AppImage: {fileID: 21300000, guid: 4e614caa2f7df1648a88efb72aa7efac, type: 3}
+    - AppImage: {fileID: 21300000, guid: 42f58b590785243448355a54d99e16a1, type: 3}
       AppName: "SpamChat\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: fd84c49ff13e36148907c6588e0ef692, type: 3}
+    - AppImage: {fileID: 21300000, guid: fd64e76450498b441b8b014a499fa622, type: 3}
       AppName: "ExtraGram\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Red\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: cf9eba661a2e15044a81b07ff7c0ab94, type: 3}
+    - AppImage: {fileID: 21300000, guid: abb99f8f62a0fb44c9e1df0cc85404a2, type: 3}
       AppName: "ZMail\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Communication\r"
-    - AppImage: {fileID: 21300000, guid: 2583771a039a61146998d2475dce7134, type: 3}
+    - AppImage: {fileID: 21300000, guid: 9ea2c8114d8d115468f80873757b2b12, type: 3}
       AppName: "ZDrive\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: 71a45561b501e0b4ebb4309d2fb853dd, type: 3}
+    - AppImage: {fileID: 21300000, guid: a2510901acaa1df42ac1f49dd96c6611, type: 3}
       AppName: "ZMap\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 9b0713734e275ea4ba1570988eb27592, type: 3}
+    - AppImage: {fileID: 21300000, guid: 74f2b348b953d844ea2a7518020da8d9, type: 3}
       AppName: "Money Flush\r"
       CompanyName: "Moyan\r"
       AppColor: "Red\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 2f8744e1593eee443ad27ce994ccfb2e, type: 3}
+    - AppImage: {fileID: 21300000, guid: 806d76714444454498e4bc2cac4e5a9a, type: 3}
       AppName: "Atlanta\r"
       CompanyName: "Amazon Inc\r"
       AppColor: "Black\r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: 4f20ecb5ad0dfad45b48e668f3423564, type: 3}
+    - AppImage: {fileID: 21300000, guid: d388e0982e2a32149b01d448b40b6da9, type: 3}
       AppName: "FakeNews\r"
       CompanyName: "SpyFactory Inc\r"
       AppColor: "Blue\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: a8c2a63563f8ffe4b9239c71b79f86ae, type: 3}
+    - AppImage: {fileID: 21300000, guid: c6e5ce03fc40d7e489c9641faf34b432, type: 3}
       AppName: "ClothesAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink\r"
       Catagory: "Marketplace\r"
-    - AppImage: {fileID: 21300000, guid: 4a7717b5cdebe234a89abfa3f1723740, type: 3}
+    - AppImage: {fileID: 21300000, guid: 2463715d1a705fb408e846860944d2b0, type: 3}
       AppName: "MusicAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink \r"
       Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: f11c92beaad44be459edc188dd1bc193, type: 3}
+    - AppImage: {fileID: 21300000, guid: 2463715d1a705fb408e846860944d2b0, type: 3}
       AppName: "GetFix\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Red\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: 2a143d7d07623884780a7ea96fc73015, type: 3}
+    - AppImage: {fileID: 21300000, guid: 8b6e519c5c96d134798e898dd445d14e, type: 3}
       AppName: "Pandora\r"
       CompanyName: "Spam Inc\r"
       AppColor: "Purple\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: f5788772a5936ee4da317665a4dbaeb2, type: 3}
+    - AppImage: {fileID: 21300000, guid: beb83f8ad497ae44bab51ae75cf8f657, type: 3}
       AppName: "Calendar\r"
       CompanyName: "Native Inc\r"
       AppColor: "Brown\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: e6b959eff770a0e4db504c4b047025b7, type: 3}
+    - AppImage: {fileID: 21300000, guid: c85de3ef77ac56d4aa9ec7599a9d6228, type: 3}
       AppName: "Alarm\r"
       CompanyName: "Native Inc\r"
       AppColor: "Red\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: 2846f27e6d55324469a5424ef21cc21f, type: 3}
+    - AppImage: {fileID: 21300000, guid: 1ad6fa7b40740fb4c9f925d95607c25b, type: 3}
       AppName: "Camera\r"
       CompanyName: "SpyFactory Inc\r"
       AppColor: "Grey\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: f68ed6938d903e244af04acce51b9535, type: 3}
+    - AppImage: {fileID: 21300000, guid: 332bb711438d408498aba63fc8f17e4d, type: 3}
       AppName: "Notes\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: ef14a67e553a100479b7aafc10d91f3b, type: 3}
+    - AppImage: {fileID: 21300000, guid: 58ec80b6c0662244eb32b6ac1d7bdcd7, type: 3}
       AppName: "Messages\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Yellow\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 168315b3bcb1e7e429d29c699ab45a7c, type: 3}
+    - AppImage: {fileID: 21300000, guid: 0a130205f5c4e2140a998391524e3515, type: 3}
       AppName: "Caller\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Green\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: af480dfec2e162f4ba6577e9475a1814, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6ea8a4c1d5a848b449951a26f9479042, type: 3}
       AppName: "File Manager\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Brown\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 3bc24ba052c6fde488c924e2babca9be, type: 3}
+    - AppImage: {fileID: 21300000, guid: 315ebe9001fee7a4c9a647c51e3e2f17, type: 3}
       AppName: "Metronome\r"
       CompanyName: GetFix Inc
       AppColor: "Grey\r"
       Catagory: "Utility\r"
     col: 4
-    scoreSequence: 01000000
-    ScoreToComplete: 50
-    ObjectiveText: 'Try To Arrange Apps in Alphabetic Order And try to Achive Score  '
-  - LevelNo: 5
+    scoreSequence: 01000000020000000300000004000000
+    ScoreToComplete: 14
+    ObjectiveText: 'Try To Arrange Apps By Name Order & by Color & by category &
+      by creator And try to Achieve Score  '
+    DummyApps: 0
+  - LevelNo: 4
     Description: 
     Apps:
-    - AppImage: {fileID: 21300000, guid: 47b392c6b8c1e144ba08fc8d73c83309, type: 3}
+    - AppImage: {fileID: 21300000, guid: ca8ea5129f54a18458d9cedd33961beb, type: 3}
       AppName: "NewTube\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "Red\r"
       Catagory: "MultiMedia\r"
-    - AppImage: {fileID: 21300000, guid: 1acbf28a9966ac6489c1d942253334e6, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6423315ac2d3d2b458b198f749a2ba17, type: 3}
       AppName: "FlipFlop\r"
       CompanyName: "BitChance\r"
       AppColor: "Black\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: 44b80c43d6f595c418c53ec06a7937e3, type: 3}
+    - AppImage: {fileID: 21300000, guid: bac47a5c21b11cf41823ba2c2545219f, type: 3}
       AppName: "FaceLook\r"
       CompanyName: "Facelook Inc\r"
       AppColor: "Blue\r"
       Catagory: "Social Media\r"
-    - AppImage: {fileID: 21300000, guid: 71a45561b501e0b4ebb4309d2fb853dd, type: 3}
+    - AppImage: {fileID: 21300000, guid: a2510901acaa1df42ac1f49dd96c6611, type: 3}
       AppName: "ZMap\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White\r"
       Catagory: "Utility\r"
-    - AppImage: {fileID: 21300000, guid: 72346de3db32af34ea2bece0b1481aef, type: 3}
+    - AppImage: {fileID: 21300000, guid: 461a92c15b0d5c5429b9b27ba9cb581d, type: 3}
       AppName: "ZDocs\r"
       CompanyName: "GoogolFlex\r"
       AppColor: "White \r"
       Catagory: "File Viewer\r"
-    - AppImage: {fileID: 21300000, guid: f0686b3634950154c8d57edaebb3eeb0, type: 3}
+    - AppImage: {fileID: 21300000, guid: 70be5981469145b48ba63b449e703992, type: 3}
       AppName: "TimeCraft\r"
       CompanyName: "Moyan\r"
       AppColor: "Green\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 5583ee69899b73141816cdba81af8b7b, type: 3}
+    - AppImage: {fileID: 21300000, guid: e54dfee227a93894fac1d4fe167b44c7, type: 3}
       AppName: "SUBG\r"
       CompanyName: "MarcoHard\r"
       AppColor: "Brown\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: fc06ae6eed5a6a54a943ed43448018dc, type: 3}
+    - AppImage: {fileID: 21300000, guid: cc03fce6f85f5794ea34475e0c554f7a, type: 3}
       AppName: "TrickyPedia\r"
       CompanyName: "SpyFactory Inc\r"
       AppColor: "Purple\r"
       Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: 4a7717b5cdebe234a89abfa3f1723740, type: 3}
+    - AppImage: {fileID: 21300000, guid: 2463715d1a705fb408e846860944d2b0, type: 3}
       AppName: "MusicAddict\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Pink \r"
       Catagory: "Cloud\r"
-    - AppImage: {fileID: 21300000, guid: 731053d655a95e9438411ba11f218ea0, type: 3}
+    - AppImage: {fileID: 21300000, guid: 93c745ebf52cb074898288270523c12b, type: 3}
       AppName: "Fools TD\r"
       CompanyName: "MacroHard\r"
       AppColor: "Green\r"
       Catagory: "Game\r"
-    - AppImage: {fileID: 21300000, guid: 04b5384e11fb8d44a8e3978bea38b622, type: 3}
+    - AppImage: {fileID: 21300000, guid: 3a3180770ae431f459120b27f8cd578f, type: 3}
       AppName: "Tweak\r"
       CompanyName: "BitChance\r"
       AppColor: "Purple\r"
       Catagory: "MultiMedia\r"
-    - AppImage: {fileID: 21300000, guid: f11c92beaad44be459edc188dd1bc193, type: 3}
+    - AppImage: {fileID: 21300000, guid: 8e5317c55608c4947a11a6b7a2cecdc2, type: 3}
       AppName: "GetFix\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Red\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: 9c29469b18482b44386f301a88337ab6, type: 3}
+    - AppImage: {fileID: 21300000, guid: 67a6f562afabf504ba8f7861208352ec, type: 3}
       AppName: "Settings\r"
       CompanyName: "Native Inc\r"
       AppColor: "Grey\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: f68ed6938d903e244af04acce51b9535, type: 3}
+    - AppImage: {fileID: 21300000, guid: 332bb711438d408498aba63fc8f17e4d, type: 3}
       AppName: "Notes\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Yellow\r"
       Catagory: "Multimedia\r"
-    - AppImage: {fileID: 21300000, guid: 77fbdc3ad5a6fe444aed3cebdf6ba70d, type: 3}
+    - AppImage: {fileID: 21300000, guid: 401bdd706ce922c4e805ca68b84984c6, type: 3}
       AppName: "Gallery\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Red\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: ef14a67e553a100479b7aafc10d91f3b, type: 3}
+    - AppImage: {fileID: 21300000, guid: 58ec80b6c0662244eb32b6ac1d7bdcd7, type: 3}
       AppName: "Messages\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Yellow\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 168315b3bcb1e7e429d29c699ab45a7c, type: 3}
+    - AppImage: {fileID: 21300000, guid: 0a130205f5c4e2140a998391524e3515, type: 3}
       AppName: "Caller\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Green\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: d9cec48f2d6b9504dbdbe8d7cbb2e882, type: 3}
+    - AppImage: {fileID: 21300000, guid: 58cb2e94ca8784c418f9c7fcfa87a4f0, type: 3}
       AppName: "Voice Recorder\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Grey\r"
       Catagory: "Quality of life\r"
-    - AppImage: {fileID: 21300000, guid: af480dfec2e162f4ba6577e9475a1814, type: 3}
+    - AppImage: {fileID: 21300000, guid: 6ea8a4c1d5a848b449951a26f9479042, type: 3}
       AppName: "File Manager\r"
       CompanyName: "GetFix Inc\r"
       AppColor: "Brown\r"
       Catagory: "OS\r"
-    - AppImage: {fileID: 21300000, guid: 3bc24ba052c6fde488c924e2babca9be, type: 3}
+    - AppImage: {fileID: 21300000, guid: 315ebe9001fee7a4c9a647c51e3e2f17, type: 3}
       AppName: "Metronome\r"
       CompanyName: GetFix Inc
       AppColor: "Grey\r"
       Catagory: "Utility\r"
     col: 4
-    scoreSequence: 01000000
-    ScoreToComplete: 55
-    ObjectiveText: 'Try To Arrange Apps in Alphabetic Order And try to Achive Score  '
+    scoreSequence: 01000000020000000300000004000000
+    ScoreToComplete: 16
+    ObjectiveText: 'Try To Arrange Apps By Name Order & by Color & by category &
+      by creator And try to Achieve Score  '
+    DummyApps: 0
   filePath:
   - LevelOneData
   - LevelTwoData
@@ -5191,6 +5757,7 @@ MonoBehaviour:
   - LevelFourData
   - LevelFiveData
   - LevelSixData
+  TotalNumberAppsExitInScreen: 24
 --- !u!4 &1323378851
 Transform:
   m_ObjectHideFlags: 0
@@ -5250,6 +5817,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 52c80efc319344b4aa4b097cc54d8a22, type: 3}
   ProfileImage: {fileID: 1083918399}
   ProgressBar: {fileID: 1379427661}
+  InfoScreen: {fileID: 1871049334}
+  InfoScreenAppName: {fileID: 361420456}
+  InfoScreenColor: {fileID: 1415738563}
+  InfoScreenCreator: {fileID: 1482961070}
+  InfoScreenCategory: {fileID: 885761326}
+  APPImage: {fileID: 934055637}
 --- !u!1 &1379427659
 GameObject:
   m_ObjectHideFlags: 0
@@ -5306,12 +5879,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e80ce6a0326a15498e91d249754241e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d36263149a47f9242b47b146bd8bc49a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -5404,6 +5977,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391770624}
   m_CullTransparentMesh: 0
+--- !u!1 &1415738561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415738562}
+  - component: {fileID: 1415738564}
+  - component: {fileID: 1415738563}
+  m_Layer: 5
+  m_Name: Color (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1415738562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415738561}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1488783154}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 572, y: -0.000030517578}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1415738563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415738561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Color :'
+--- !u!222 &1415738564
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415738561}
+  m_CullTransparentMesh: 0
 --- !u!1 &1435510640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5481,6 +6132,163 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435510640}
+  m_CullTransparentMesh: 0
+--- !u!1 &1482961068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482961069}
+  - component: {fileID: 1482961071}
+  - component: {fileID: 1482961070}
+  m_Layer: 5
+  m_Name: Creator (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1482961069
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482961068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 592074066}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 527.00006, y: 0}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1482961070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482961068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Creator :'
+--- !u!222 &1482961071
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482961068}
+  m_CullTransparentMesh: 0
+--- !u!1 &1488783153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488783154}
+  - component: {fileID: 1488783156}
+  - component: {fileID: 1488783155}
+  m_Layer: 5
+  m_Name: Color
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1488783154
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488783153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1415738562}
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -257, y: -196}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1488783155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488783153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Color :'
+--- !u!222 &1488783156
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488783153}
   m_CullTransparentMesh: 0
 --- !u!1 &1495715406
 GameObject:
@@ -6310,6 +7118,81 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!1 &1871049334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871049335}
+  - component: {fileID: 1871049337}
+  - component: {fileID: 1871049336}
+  m_Layer: 5
+  m_Name: Details Screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1871049335
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871049334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 229052567}
+  m_Father: {fileID: 2013784065}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1871049336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871049334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7058824}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1871049337
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871049334}
+  m_CullTransparentMesh: 0
 --- !u!1 &1921309095
 GameObject:
   m_ObjectHideFlags: 0
@@ -6546,6 +7429,84 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!1 &1951913387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1951913388}
+  - component: {fileID: 1951913390}
+  - component: {fileID: 1951913389}
+  m_Layer: 5
+  m_Name: Header
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1951913388
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951913387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 229052567}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -41.6, y: -153.5}
+  m_SizeDelta: {x: 653.1579, y: 151.31873}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1951913389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951913387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9298e19a07ad8be4abeb33b7b6416c41, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: APP INFO
+--- !u!222 &1951913390
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951913387}
+  m_CullTransparentMesh: 0
 --- !u!1 &1962416006
 GameObject:
   m_ObjectHideFlags: 0
@@ -6756,7 +7717,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2013784065}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7066,12 +8027,12 @@ RectTransform:
   m_Children:
   - {fileID: 465742721}
   - {fileID: 1495715407}
-  - {fileID: 854963090}
-  - {fileID: 1263131322}
+  - {fileID: 1012363758}
   - {fileID: 1964348284}
   - {fileID: 977340932}
   - {fileID: 883654535}
   - {fileID: 824375462}
+  - {fileID: 1871049335}
   - {fileID: 1640438943}
   m_Father: {fileID: 0}
   m_RootOrder: 2

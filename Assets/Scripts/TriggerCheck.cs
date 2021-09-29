@@ -15,7 +15,7 @@ public class TriggerCheck : MonoBehaviour
     {
         if (other.gameObject.GetComponent<TriggerCheck>()) 
         {
-            Middle = true;
+           // Middle = true;
 
             if (GetComponent<AppAttriutes>()) 
             {
@@ -34,7 +34,7 @@ public class TriggerCheck : MonoBehaviour
                 if (/*GetComponent<UIDrag>().pointerUp == true*/Middle && !InsideFolder )
                 {
                     Debug.Log("First Drag 2");
-                    if (!Folder)
+                    if (!Folder  /*&& !GetComponent<UIDrag>().IsEmpty      Empty Cell Logic*/)
                     {
                         //Create folder
                         Debug.Log("Folder Creation");

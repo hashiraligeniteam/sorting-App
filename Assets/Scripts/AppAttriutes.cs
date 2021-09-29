@@ -17,6 +17,9 @@ public class AppAttriutes : MonoBehaviour
     public GameObject AppsCountImage;
     public Sprite MainSPrite;
     public Sprite HighliterSprite;
+
+    public Sprite AppSprite;
+
     public void ShowText()
     {
         nameText.text = AppName;

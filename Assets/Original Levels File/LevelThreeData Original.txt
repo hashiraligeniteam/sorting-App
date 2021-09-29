@@ -6,6 +6,10 @@ FlipFlop
 Black
 Social Media
 BitChance
+ZDrive
+White
+Cloud
+GoogolFlex
 Zmap
 White
 Utility
@@ -18,6 +22,10 @@ SUBG
 Brown
 Game
 MarcoHard
+MoneyFlush
+Red
+Game
+Moyan
 Tweak
 Purple
 MultiMedia
@@ -38,6 +46,14 @@ GetFix
 Red
 Multimedia
 GetFix Inc
+Calculator
+Red
+Quality of life
+Native Inc
+Calendar
+Brown
+Quality of life
+Native Inc
 Alarm
 Red
 Quality of life

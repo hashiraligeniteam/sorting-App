@@ -10,10 +10,26 @@ ExtraGram
 Red
 Social Media
 Facelook Inc
+ZMail
+White
+Communication
+GoogolFlex
+Zpay
+White 
+Utility
+GoogolFlex
 Spender
 Pink
 Social Media
 Facelook Inc
+NewTube
+Red
+MultiMedia
+GoogolFlex
+ClothesAddict
+Pink
+Marketplace
+GetFix Inc
 NothingMuch
 Yellow
 Communication
@@ -30,6 +46,22 @@ Money Flush
 Red
 Game
 Moyan
+Calculator
+Red
+Quality of life
+Native Inc
+Alarm
+Red
+Quality of life
+Native Inc
+Settings
+Grey
+OS
+Native Inc
+Gallery
+Red
+OS
+GetFix Inc
 Caller
 Green
 OS
