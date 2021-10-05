@@ -1,0 +1,391 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &735374445480348285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 735374445480348286}
+  - component: {fileID: 735374445480348287}
+  m_Layer: 0
+  m_Name: Game Config
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &735374445480348286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735374445480348285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 233.0538, y: 402.5555, z: 0.013988495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735374445480348287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735374445480348285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c04a43eed66e9440ada2b96e85bfedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AT:
+  - AppName: SpamChat
+    AppImage: {fileID: 21300000, guid: 459aaf95888732a48802f22e7f125c21, type: 3}
+    AppColor: Yellow
+    Catagory: Social Media
+    CompanyName: Spam Inc
+  - AppName: NewTube
+    AppImage: {fileID: 21300000, guid: ca8ea5129f54a18458d9cedd33961beb, type: 3}
+    AppColor: White
+    Catagory: MultiMedia
+    CompanyName: GoogolFlex
+  - AppName: FlipFlop
+    AppImage: {fileID: 21300000, guid: 2522c129e24ec454c85453ebb53519f9, type: 3}
+    AppColor: Black
+    Catagory: Social Media
+    CompanyName: BitChance
+  - AppName: ExtraGram
+    AppImage: {fileID: 21300000, guid: a197fa5b22d3c044b88839b22e056d1f, type: 3}
+    AppColor: Red
+    Catagory: Social Media
+    CompanyName: SpyFactory Inc
+  - AppName: FaceLook
+    AppImage: {fileID: 21300000, guid: 2f60dba66feef074b90207a2d779007c, type: 3}
+    AppColor: Blue
+    Catagory: Social Media
+    CompanyName: SpyFactory Inc
+  - AppName: ZMail
+    AppImage: {fileID: 21300000, guid: ebfb737748b3acf4482dd642c2717232, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: GoogolFlex
+  - AppName: ZDrive
+    AppImage: {fileID: 21300000, guid: 8413c8caf71d0074a9d313ec3f186040, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: GoogolFlex
+  - AppName: ZMap
+    AppImage: {fileID: 21300000, guid: e0bf583ba58863a47a0defc146012adc, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: GoogolFlex
+  - AppName: ZPay
+    AppImage: {fileID: 21300000, guid: 6f4123fd609dff74f9de2a142979fd60, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: GoogolFlex
+  - AppName: ZDocs
+    AppImage: {fileID: 21300000, guid: 4690c83edf13baa448d93ae49a0fed4f, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: GoogolFlex
+  - AppName: TimeCraft
+    AppImage: {fileID: 21300000, guid: 9897975f3a102804e94fae43fee61b0c, type: 3}
+    AppColor: Brown
+    Catagory: Game
+    CompanyName: GoogolFlex
+  - AppName: Spender
+    AppImage: {fileID: 21300000, guid: 0de6bbac872773a459e41edc1e8d23c4, type: 3}
+    AppColor: Pink
+    Catagory: Social Media
+    CompanyName: SpyFactory Inc
+  - AppName: SUBG
+    AppImage: {fileID: 21300000, guid: f2f5c5ade6a4c5d4b9c6a3b3f810545d, type: 3}
+    AppColor: Blue
+    Catagory: Game
+    CompanyName: BitChance
+  - AppName: Money Flush
+    AppImage: {fileID: 21300000, guid: eae051c772380ad48a1c42e33ae90f8c, type: 3}
+    AppColor: Blue
+    Catagory: Game
+    CompanyName: BitChance
+  - AppName: Atlanta
+    AppImage: {fileID: 21300000, guid: c5bdda4d2c08c6f47b951161ef04f709, type: 3}
+    AppColor: Brown
+    Catagory: Utility
+    CompanyName: BitChance
+  - AppName: Tweak
+    AppImage: {fileID: 21300000, guid: 3f1d8acbc0e43ad4bb2f3cece4daffe3, type: 3}
+    AppColor: Purple
+    Catagory: MultiMedia
+    CompanyName: BitChance
+  - AppName: Fools TD
+    AppImage: {fileID: 21300000, guid: 41c0d23ef08bd7b41b4d0e2e298115ec, type: 3}
+    AppColor: Blue
+    Catagory: Game
+    CompanyName: SpyFactory Inc
+  - AppName: FakeNews
+    AppImage: {fileID: 21300000, guid: b53bc47e6ed64204296ab3f6bb883cb5, type: 3}
+    AppColor: Blue
+    Catagory: Multimedia
+    CompanyName: SpyFactory Inc
+  - AppName: ClothesAddict
+    AppImage: {fileID: 21300000, guid: 3ee9278f2a86071478173227222b6869, type: 3}
+    AppColor: Pink
+    Catagory: Utility
+    CompanyName: GetFix Inc
+  - AppName: StocksAddict
+    AppImage: {fileID: 21300000, guid: cfd2230e01615544398854e53da7bf38, type: 3}
+    AppColor: Pink
+    Catagory: Utility
+    CompanyName: GetFix Inc
+  - AppName: FoodAddict
+    AppImage: {fileID: 21300000, guid: d14eff2eeedf34941845b3f2a47f512f, type: 3}
+    AppColor: Pink
+    Catagory: Utility
+    CompanyName: GetFix Inc
+  - AppName: MusicAddict
+    AppImage: {fileID: 21300000, guid: 8e5317c55608c4947a11a6b7a2cecdc2, type: 3}
+    AppColor: Pink
+    Catagory: Utility
+    CompanyName: GetFix Inc
+  - AppName: PropertyAddict
+    AppImage: {fileID: 21300000, guid: 1ecf73bc8892aad419a9e01074f772e6, type: 3}
+    AppColor: Pink
+    Catagory: Utility
+    CompanyName: GetFix Inc
+  - AppName: TrickyPedia
+    AppImage: {fileID: 21300000, guid: 9510117c89b5e104b8ec9a888ce8b818, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: SpyFactory Inc
+  - AppName: Stupor
+    AppImage: {fileID: 21300000, guid: bcd642caf5d158e418c1d4d89bcef59c, type: 3}
+    AppColor: Black
+    Catagory: Utility
+    CompanyName: Spam Inc
+  - AppName: Pandora
+    AppImage: {fileID: 21300000, guid: 8b6e519c5c96d134798e898dd445d14e, type: 3}
+    AppColor: White
+    Catagory: Utility
+    CompanyName: Spam Inc
+  - AppName: S.C.A.M Bank
+    AppImage: {fileID: 21300000, guid: 768686e0fe35a394fbff53fd0d62861a, type: 3}
+    AppColor: Yellow
+    Catagory: Utility
+    CompanyName: BitChance
+  - AppName: Syke
+    AppImage: {fileID: 21300000, guid: 2507d4248c0110e4cb4f806b760c32e5, type: 3}
+    AppColor: White
+    Catagory: Social Media
+    CompanyName: Spam Inc
+  - AppName: NothingMuch
+    AppImage: {fileID: 21300000, guid: eb38b3d7d1fdd8b4f9a6ea170d069bc4, type: 3}
+    AppColor: Green
+    Catagory: Social Media
+    CompanyName: Spam Inc
+  - AppName: GetFix
+    AppImage: {fileID: 21300000, guid: ba6c8410cfb5a8143980e690e854301b, type: 3}
+    AppColor: Black
+    Catagory: Multimedia
+    CompanyName: GetFix Inc
+  - AppName: Calculator
+    AppImage: {fileID: 21300000, guid: a7078a824242de741a20b977b500084a, type: 3}
+    AppColor: Grey
+    Catagory: In-Built
+    CompanyName: Native Inc
+  - AppName: Calendar
+    AppImage: {fileID: 21300000, guid: 9234cd48e16b2ad429b6ccc0250889d8, type: 3}
+    AppColor: White
+    Catagory: In-Built
+    CompanyName: Native Inc
+  - AppName: Alarm
+    AppImage: {fileID: 21300000, guid: e6b959eff770a0e4db504c4b047025b7, type: 3}
+    AppColor: Black
+    Catagory: In-Built
+    CompanyName: Native Inc
+  - AppName: Camera
+    AppImage: {fileID: 21300000, guid: d09acf980dc342e4982052e0866bca2c, type: 3}
+    AppColor: Grey
+    Catagory: In-Built
+    CompanyName: SpyFactory Inc
+  - AppName: Settings
+    AppImage: {fileID: 21300000, guid: f24e24a956945c146adcd6728c8038bb, type: 3}
+    AppColor: Grey
+    Catagory: In-Built
+    CompanyName: Native Inc
+  - AppName: Notes
+    AppImage: {fileID: 21300000, guid: f68ed6938d903e244af04acce51b9535, type: 3}
+    AppColor: White
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  - AppName: Gallery
+    AppImage: {fileID: 21300000, guid: e2c26093544ce8343b61ec5d2c2af7d0, type: 3}
+    AppColor: White
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  - AppName: Messages
+    AppImage: {fileID: 21300000, guid: b260ce53233358f47abceb4acc78ca0f, type: 3}
+    AppColor: Green
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  - AppName: Caller
+    AppImage: {fileID: 21300000, guid: 409411d838f876c4189371f552e538a0, type: 3}
+    AppColor: Green
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  - AppName: Voice Recorder
+    AppImage: {fileID: 21300000, guid: f81b6d670f1a91040a9a20c5533a99ef, type: 3}
+    AppColor: Black
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  - AppName: File Manager
+    AppImage: {fileID: 21300000, guid: 8cf7e951697d8334ab617d2b162660c6, type: 3}
+    AppColor: White
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  - AppName: Metronome
+    AppImage: {fileID: 21300000, guid: 4728c9dbcfbb8484aa34bbc49b0205d1, type: 3}
+    AppColor: Grey
+    Catagory: In-Built
+    CompanyName: GetFix Inc
+  LC:
+  - AppsName:
+    - PropertyAddict
+    - Calculator
+    - StocksAddict
+    - Pandora
+    - TimeCraft
+    - Syke
+    - Atlanta
+    - Metronome
+    Sequencing:
+    - State: 2
+      ScoreToComplete: 4
+      COmpleted: 0
+    CompleteMoves: 4
+  - AppsName:
+    - ZMap
+    - FlipFlop
+    - ZDocs
+    - Spender
+    - GetFix
+    - NothingMuch
+    - TrickyPedia
+    - Stupor
+    - Alarm
+    - Camera
+    - Pandora
+    - Settings
+    Sequencing:
+    - State: 2
+      ScoreToComplete: 7
+      COmpleted: 0
+    CompleteMoves: 8
+  - AppsName:
+    - NewTube
+    - FlipFlop
+    - ZMap
+    - FaceLook
+    - SUBG
+    - Tweak
+    - Fools TD
+    - Calendar
+    - Pandora
+    - GetFix
+    - Calculator
+    - FakeNews
+    - Voice Recorder
+    - Gallery
+    Sequencing:
+    - State: 1
+      ScoreToComplete: 8
+      COmpleted: 0
+    CompleteMoves: 12
+  - AppsName:
+    - SpamChat
+    - ZMail
+    - FaceLook
+    - ZMap
+    - Spender
+    - ZDocs
+    - FakeNews
+    - Atlanta
+    - MusicAddict
+    - FoodAddict
+    - Stupor
+    - S.C.A.M Bank
+    - Calculator
+    - Notes
+    - Settings
+    - Camera
+    Sequencing:
+    - State: 1
+      ScoreToComplete: 12
+      COmpleted: 0
+    CompleteMoves: 12
+  - AppsName:
+    - SpamChat
+    - ExtraGram
+    - ZMail
+    - ZDrive
+    - ZMap
+    - Money Flush
+    - Atlanta
+    - FakeNews
+    - ClothesAddict
+    - MusicAddict
+    - GetFix
+    - Pandora
+    - Calculator
+    - Calendar
+    - Alarm
+    - Camera
+    - Settings
+    - Notes
+    Sequencing:
+    - State: 1
+      ScoreToComplete: 12
+      COmpleted: 0
+    - State: 2
+      ScoreToComplete: 12
+      COmpleted: 0
+    CompleteMoves: 24
+  - AppsName:
+    - NewTube
+    - FlipFlop
+    - FaceLook
+    - ZMap
+    - ZDocs
+    - TimeCraft
+    - SUBG
+    - TrickyPedia
+    - MusicAddict
+    - Fools TD
+    - GetFix
+    - Tweak
+    - PropertyAddict
+    - ClothesAddict
+    - Calculator
+    - Caller
+    - Metronome
+    - Messages
+    - File Manager
+    - Gallery
+    Sequencing:
+    - State: 1
+      ScoreToComplete: 14
+      COmpleted: 0
+    - State: 2
+      ScoreToComplete: 14
+      COmpleted: 0
+    - State: 3
+      ScoreToComplete: 12
+      COmpleted: 0
+    CompleteMoves: 36
+  Col: 4

@@ -1,80 +1,72 @@
 SpamChat
 Yellow
-Communication
+Social Media
 Spam Inc
 ExtraGram
 Red
 Social Media
-Facelook Inc
+SpyFactory Inc
 ZMail
 White
-Communication
+Utility
 GoogolFlex
 ZDrive
 White
-Cloud
+Utility
 GoogolFlex
 ZMap
 White
 Utility
 GoogolFlex
 Money Flush
-Red
+Blue
 Game
-Moyan
+BitChance
 Atlanta
-Black
-Marketplace
-Amazon Inc
+Brown
+Utility
+BitChance
 FakeNews
 Blue
 Multimedia
 SpyFactory Inc
 ClothesAddict
 Pink
-Marketplace
+Utility
 GetFix Inc
 MusicAddict
-Pink 
-Cloud
+Pink
+Utility
 GetFix Inc
 GetFix
-Red
+Black
 Multimedia
 GetFix Inc
 Pandora
-Purple
+White
 Utility
 Spam Inc
+Calculator
+Grey
+In-Built
+Native Inc
 Calendar
-Brown
-Quality of life
+White
+In-Built
 Native Inc
 Alarm
-Red
-Quality of life
+Black
+In-Built
 Native Inc
 Camera
 Grey
-Utility
+In-Built
 SpyFactory Inc
-Notes
-Yellow
-Multimedia
-GetFix Inc
-Messages
-Yellow
-OS
-GetFix Inc
-Caller
-Green
-OS
-GetFix Inc
-File Manager
-Brown
-OS
-GetFix Inc
-Metronome
+Settings
 Grey
-Utility
+In-Built
+Native Inc
+Notes
+White
+In-Built
 GetFix Inc

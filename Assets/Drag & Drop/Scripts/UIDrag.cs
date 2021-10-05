@@ -33,21 +33,41 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
             Drag = true;
             Moving = true;
             GameHandler.Instance.DraggedObject = this.gameObject;
+       //     if (GetComponent<AppAttriutes>())
+       //{
+       //     GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
+       //     GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+       //    GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
+       //     //= GetComponent<AppAttriutes>().MainSPrite;
+       // }
         }
-    
+
         //Debug.Log(Input.mousePosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         //GameHandler.Instance.Dargging = false;
+        if (GetComponent<AppAttriutes>())
+        {
+            GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+            GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
+        }
         Drag = false;
     }
 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-      //  if (!IsEmpty) 
+        GameHandler.Instance.OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = false;
+        GameHandler.Instance.AppsMainParent.GetComponent<GridLayoutGroup>().enabled = false;
+
+        //if (GetComponent<AppAttriutes>())
+        //{
+        //    //GetComponent<AppAttriutes>().HighLighter.gameObject.GetComponent<Image>().sprite = null;
+        //    GetComponent<AppAttriutes>().HighLighter.gameObject.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
+        //}
+        //  if (!IsEmpty) 
         {
             GameHandler.Instance.CloseRealtion();
             GameHandler.Instance.SwapableObject = null;
@@ -67,6 +87,7 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+       
         //if (!IsEmpty)
         {
             GameHandler.Instance.StartCoroutine(GameHandler.Instance.DestroyingObjects(GetComponent<GraphicRaycaster>(), GetComponent<Canvas>()));

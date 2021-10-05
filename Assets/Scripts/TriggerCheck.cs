@@ -17,13 +17,13 @@ public class TriggerCheck : MonoBehaviour
         {
            // Middle = true;
 
-            if (GetComponent<AppAttriutes>()) 
-            {
-                GetComponent<AppAttriutes>().MainSPrite = GetComponent<Image>().sprite;
-                GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;
-                GetComponent<AppAttriutes>().HighLighter.SetActive(true);
-                //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
-            }
+            //if (GetComponent<AppAttriutes>()) 
+            //{
+            //    GetComponent<AppAttriutes>().MainSPrite = GetComponent<Image>().sprite;
+            //    GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;
+            //    GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+            //    //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
+            //}
         }
         if (other.GetComponent<UIDrag>() && GetComponent<UIDrag>())
         {
@@ -31,7 +31,8 @@ public class TriggerCheck : MonoBehaviour
             if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == false)
             {
                 Debug.Log("First Drag 1");
-                if (/*GetComponent<UIDrag>().pointerUp == true*/Middle && !InsideFolder )
+
+                if (/*GetComponent<UIDrag>().pointerUp == true*/Middle && !InsideFolder)
                 {
                     Debug.Log("First Drag 2");
                     if (!Folder  /*&& !GetComponent<UIDrag>().IsEmpty      Empty Cell Logic*/)
@@ -52,8 +53,21 @@ public class TriggerCheck : MonoBehaviour
                                 GameHandler.Instance.CreateFolder(this.gameObject, other.gameObject, this);
                                 other.GetComponent<UIDrag>().Moving = false;
                             }
-                          
+
                         }
+                    }
+                }
+            }
+            else 
+            {
+                if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == true)
+                {
+                    if (GetComponent<AppAttriutes>())
+                    {
+                        GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
+                        GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+                        GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
+                        //= GetComponent<AppAttriutes>().MainSPrite;
                     }
                 }
             }
@@ -98,6 +112,8 @@ public class TriggerCheck : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+        GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
         if (other.gameObject.GetComponent<TriggerCheck>())
         {
             Debug.Log("Exit");

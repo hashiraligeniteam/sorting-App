@@ -1,42 +1,42 @@
 SpamChat
 Yellow
-Communication
+Social Media
 Spam Inc
 FaceLook
 Blue
 Social Media
-Facelook Inc
-Zmail
+SpyFactory Inc
+ZMail
 White
-Communication
+Utility
 GoogolFlex
-Zmap
+ZMap
 White
 Utility
 GoogolFlex
 ZDocs
 White 
-File Viewer
+Utility
 GoogolFlex
 Spender
 Pink
 Social Media
-Facelook Inc
+SpyFactory Inc
 Atlanta
-Black
-Marketplace
-Amazon Inc
+Brown
+Utility
+BitChance
 FakeNews
 Blue
 Multimedia
 SpyFactory Inc
 FoodAddict
 Pink
-Marketplace
+Utility
 GetFix Inc
 MusicAddict
 Pink 
-Cloud
+Utility
 GetFix Inc
 Stupor
 Black
@@ -47,34 +47,18 @@ Yellow
 Utility
 BitChance
 Calculator
-Red
-Quality of life
+Grey
+In-Built
 Native Inc
-Calendar
-Brown
-Quality of life
-Native Inc
-Alarm
-Red
-Quality of life
+Notes
+White
+In-Built
+GetFix Inc
+Settings
+Grey
+In-Built
 Native Inc
 Camera
 Grey
-Utility
+In-Built
 SpyFactory Inc
-Caller
-Green
-OS
-GetFix Inc
-Voice Recorder
-Grey
-Category: Quality of life
-Creator: GetFix Inc
-File Manager
-Brown
-OS
-GetFix Inc
-Metronome
-Grey
-Utility
-GetFix Inc

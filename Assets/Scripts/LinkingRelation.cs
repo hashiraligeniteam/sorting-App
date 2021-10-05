@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LinkingRelation : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LinkingRelation : MonoBehaviour
     public GameObject[] RightImages;
     public GameObject[] UpImages;
     public GameObject[] DownImages;
-
+    public Color CompleteImageColor;
     public void OnRight(int CurrentIndex) 
     {
         //Debug.Log(CurrentIndex + " Right " + GameHandler.Instance.Apps[CurrentIndex ].GetComponent <AppAttriutes>().name);
@@ -115,5 +116,22 @@ public class LinkingRelation : MonoBehaviour
             Ref[i].SetActive(false);
         }
      }
+    public void ChangeColor() 
+    {
+        TurnImageColor(LeftImages);
+        TurnImageColor(RightImages);
+        TurnImageColor(UpImages);
+        TurnImageColor(DownImages);
+    }
+    public void TurnImageColor(GameObject[] Ref) 
+    {
+        for (int i = 0; i < Ref.Length; i++)
+        {
+            if (Ref[i].active)
+            {
+                Ref[i].GetComponent<Image>().color = CompleteImageColor;
+            } 
+        }
+    }
 
 }

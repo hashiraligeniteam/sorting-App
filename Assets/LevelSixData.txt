@@ -1,5 +1,5 @@
 NewTube
-Red
+White
 MultiMedia
 GoogolFlex
 FlipFlop
@@ -9,72 +9,72 @@ BitChance
 FaceLook
 Blue
 Social Media
-Facelook Inc
+SpyFactory Inc
 ZMap
 White
 Utility
 GoogolFlex
 ZDocs
 White 
-File Viewer
+Utility
 GoogolFlex
 TimeCraft
-Green
-Game
-Moyan
-SUBG
 Brown
 Game
-MarcoHard
+GoogolFlex
+SUBG
+Blue
+Game
+BitChance
 TrickyPedia
-Purple
-Cloud
+White
+Utility
 SpyFactory Inc
 MusicAddict
-Pink 
-Cloud
+Pink
+Utility
 GetFix Inc
 Fools TD
-Green
+Blue
 Game
-MacroHard
+SpyFactory Inc
 Tweak
 Purple
 MultiMedia
 BitChance
 GetFix
-Red
+Black
 Multimedia
 GetFix Inc
-Settings
+PropertyAddict
+Pink
+Utility
+GetFix Inc
+ClothesAddict
+Pink
+Utility
+GetFix Inc
+Calculator
 Grey
-OS
+In-Built
 Native Inc
-Notes
-Yellow
-Multimedia
-GetFix Inc
-Gallery
-Red
-OS
-GetFix Inc
-Messages
-Yellow
-OS
-GetFix Inc
 Caller
 Green
-OS
-GetFix Inc
-Voice Recorder
-Grey
-Quality of life
-GetFix Inc
-File Manager
-Brown
-OS
+In-Built
 GetFix Inc
 Metronome
 Grey
-Utility
+In-Built
+GetFix Inc
+File Manager
+White
+In-Built
+GetFix Inc
+Messages
+Green
+In-Built
+GetFix Inc
+Gallery
+White
+In-Built
 GetFix Inc

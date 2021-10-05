@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-
+using UnityEngine.UI;
 public class SideTrigger : MonoBehaviour
 {
     [FormerlySerializedAs("first")] public bool rightTrigger;
@@ -28,6 +28,17 @@ public class SideTrigger : MonoBehaviour
                 AssignSwapObject(other.gameObject);
             }
         }
+      
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //if (GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>())
+        //{
+        //    GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>().AppSprite;
+        //    GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+        //    GetComponentInParent<UIDrag>().GetComponent<Image>().sprite = GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>().HighliterSprite;
+        //    = GetComponent<AppAttriutes>().MainSPrite;
+        //}
     }
     int indexNumber;
     private void AssignSwapObject(GameObject other)
@@ -117,6 +128,8 @@ public class SideTrigger : MonoBehaviour
         //}
         if (GetComponentInParent<UIDrag>())
         {
+           
+
             if (!GetComponentInParent<TriggerCheck>().Middle)
             {
                 StartCoroutine(wait(other));
@@ -128,6 +141,8 @@ public class SideTrigger : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (GetComponentInParent<UIDrag>().triggerEnteredOnce || other.gameObject.GetComponentInParent<UIDrag>().triggerEnteredTwice)
         {
+            //GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+            //GetComponentInParent<UIDrag>().GetComponent<Image>().sprite = GetComponentInParent<UIDrag>().GetComponent<AppAttriutes>().AppSprite;
             GetComponentInParent<UIDrag>().triggerEnteredOnce = false;
             GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
         }

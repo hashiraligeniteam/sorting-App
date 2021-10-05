@@ -1,64 +1,56 @@
 NewTube
-Red
+White
 MultiMedia
 GoogolFlex
 FlipFlop
 Black
 Social Media
 BitChance
-Zmap
+ZMap
 White
 Utility
 GoogolFlex
-TimeCraft
-Green
-Game
-Moyan
+FaceLook
+Blue
+Social Media
+SpyFactory Inc
 SUBG
-Brown
+Blue
 Game
-MarcoHard
+BitChance
 Tweak
 Purple
 MultiMedia
 BitChance
 Fools TD
-Green
+Blue
 Game
-MacroHard
-NothingMuch
-Yellow
-Communication
-Spam Inc
+SpyFactory Inc
+FakeNews
+Blue
+Multimedia
+SpyFactory Inc
 Pandora
-Purple
+White
 Utility
 Spam Inc
 GetFix
-Red
+Black
 Multimedia
 GetFix Inc
-Alarm
-Red
-Quality of life
+Calculator
+Grey
+In-Built
 Native Inc
-Camera
-Grey
-Utility
-SpyFactory Inc
-Settings
-Grey
-OS
+Calendar
+White
+In-Built
 Native Inc
 Gallery
-Red
-OS
+White
+In-Built
 GetFix Inc
-Caller
-Green
-OS
-GetFix Inc
-Metronome
-Grey
-Utility
+Voice Recorder
+Black
+In-Built
 GetFix Inc
