@@ -27,26 +27,26 @@ public class TriggerCheck : MonoBehaviour
         }
         if (other.GetComponent<UIDrag>() && GetComponent<UIDrag>())
         {
-            Debug.Log("First Drag");
+           
             if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == false)
             {
-                Debug.Log("First Drag 1");
+              
 
                 if (/*GetComponent<UIDrag>().pointerUp == true*/Middle && !InsideFolder)
                 {
-                    Debug.Log("First Drag 2");
+                    
                     if (!Folder  /*&& !GetComponent<UIDrag>().IsEmpty      Empty Cell Logic*/)
                     {
                         //Create folder
-                        Debug.Log("Folder Creation");
+                      
                         if (other.GetComponent<TriggerCheck>().Folder && !other.GetComponent<TriggerCheck>())
                         {
-                            Debug.Log("adding in folder");
+                          
                             GameHandler.Instance.AddInFolder(gameObject, other.gameObject);
                         }
                         else
                         {
-                            Debug.Log("Create Folder");
+                            
                             if (!other.GetComponent<UIDrag>().Moving && !other.GetComponent<TriggerCheck>().InsideFolder)
                             {
                                 Debug.Log(transform.parent.name + " Parent Name " + gameObject.name + " My name");
@@ -60,13 +60,13 @@ public class TriggerCheck : MonoBehaviour
             }
             else 
             {
-                if (GetComponent<UIDrag>().Drag == false && other.gameObject.GetComponent<UIDrag>().Drag == true)
+                if (GameHandler.Instance.SwapableObject)
                 {
-                    if (GetComponent<AppAttriutes>())
+                    if (GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>())
                     {
-                        GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
-                        GetComponent<AppAttriutes>().HighLighter.SetActive(true);
-                        GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
+                        GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite;
+                        GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+                        GameHandler.Instance.SwapableObject.GetComponent<Image>().sprite = GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighliterSprite;
                         //= GetComponent<AppAttriutes>().MainSPrite;
                     }
                 }
@@ -118,9 +118,12 @@ public class TriggerCheck : MonoBehaviour
         {
             Debug.Log("Exit");
             Middle = false;
-            if (GetComponent<AppAttriutes>())
+            if (GameHandler.Instance.SwapableObject) 
             {
-                GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+                if (GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>())
+                {
+                    GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+                }
             }
                 //GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite; 
                 //GetComponent<Image>().sprite = GetComponent<AppAttriutes>().MainSPrite;

@@ -11,6 +11,9 @@ using GameAnalyticsSDK;
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler Instance;
+    [Header("Level Buttons")]
+    public Button[] LevelButtons;
+    public GameObject[] HighlighterImages;
     [Header ("Apps List")]
     public List<GameObject> Apps;
     [Header("Phone Object")]
@@ -52,6 +55,7 @@ public class GameHandler : MonoBehaviour
     public Text ObjectiveRemainingText;
     public Text TotalMovesTaken;
     public Text TimeTaken;
+    public Text MiniCompleteObjectivePanelText;
 
     //public List<GameObject> Folders;
 
@@ -84,6 +88,7 @@ public class GameHandler : MonoBehaviour
 
     public Canvas _Canvas;
     public GameObject Canfetti;
+    public GameObject MiniCompleteObjectivePanel;
 
     ScoreState scoreState;
     int stateIndex = 0;
@@ -120,6 +125,11 @@ public class GameHandler : MonoBehaviour
         GameManager.Instance.Next = false;
         GameManager.Instance.Restart = false;
       
+        for (int i = 0; i<=PlayerPrefs.GetInt("UnlockLevel"); i++)
+        {
+            LevelButtons[i].interactable = true;
+        }
+        HighlighterImages[PlayerPrefs.GetInt("UnlockLevel")].SetActive(true);
     
     }
     public void Initiate()
@@ -177,6 +187,10 @@ public class GameHandler : MonoBehaviour
         GameManager.Instance.score = 0;
         BarObjectiveText.text = (stateIndex + 1) + " / " + LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing.Length;
         ObjectiveRemainingText.text = LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex].GetMiniObjective();
+        MiniCompleteObjectivePanelText.text = LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex].GetMiniObjective();
+
+
+
         CheckScore(false);
     }
 
@@ -322,7 +336,7 @@ public class GameHandler : MonoBehaviour
 
     public void UpdateListIndex(bool InsideFolder)
     {
-        Debug.Log(InsideFolder + "  Inside Folder Bool");
+ 
         if (InsideFolder)
         {
             InsideFolderApps.Clear();
@@ -489,13 +503,12 @@ public class GameHandler : MonoBehaviour
                 //    .scoreSequence)
                 for (int j=0;j<LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing.Length;j++ )
                 {
-                    Debug.Log("come onnnnnnnnnnnnnnnnnnnnnnnnn   " + LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[j].COmpleted);
+                   
                     if (!LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[j].COmpleted) 
                     {
                         scoreState = LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[j].State;
                         stateIndex = j;
-                        Debug.Log(stateIndex + " State Index");
-                        Debug.Log(scoreState + "State");
+                        
                         break;
                     }
                 }
@@ -516,10 +529,11 @@ public class GameHandler : MonoBehaviour
                     }
             }
         }
-      Debug.Log(GameManager.Instance.score);
+     
         ProgressBar.fillAmount = GameManager.Instance.score / LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex].ScoreToComplete;
         if (ProgressBar.fillAmount==1)
         {
+            
             UpdateBarAndText();
         }
         if (GameManager.Instance.score >= LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex].ScoreToComplete)
@@ -530,12 +544,20 @@ public class GameHandler : MonoBehaviour
 
     void UpdateBarAndText() 
     {
-        if ((stateIndex+1) < LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing.Length)
+        MiniCompleteObjectivePanel.SetActive(true);
+        if ((stateIndex) < LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing.Length)
         {
             ProgressBar.fillAmount = 0.0f;
-            BarObjectiveText.text = (stateIndex + 1) + " / " +LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing.Length;
-            ObjectiveRemainingText.text = LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex + 1].GetMiniObjective();
+            //BarObjectiveText.text = (stateIndex + 1) + " / " +LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing.Length;
+            ObjectiveRemainingText.text = LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex ].GetMiniObjective();
+            StartCoroutine(ChangeMiniText());
         }
+    }
+    IEnumerator ChangeMiniText() 
+    {
+        yield return new WaitForSeconds(3f);
+        MiniCompleteObjectivePanel.SetActive(false);
+        MiniCompleteObjectivePanelText.text = LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].Sequencing[stateIndex].GetMiniObjective();
     }
     IEnumerator Wait() 
     {
@@ -560,10 +582,12 @@ public class GameHandler : MonoBehaviour
         if (LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].CompleteMoves >= CurrentMoves)
         {
             StartCoroutine(FillStars(3));
+            UnlockLevels();
         }
         else if (LevelHandler.Instance.Config.LC[GameManager.Instance.LevelNo].CompleteMoves < CurrentMoves && CurrentMoves < mid)
         {
             StartCoroutine(FillStars(2));
+            UnlockLevels();
         }
         else 
         {
@@ -573,6 +597,14 @@ public class GameHandler : MonoBehaviour
         TimeTaken.text = timer + " Sec";
         _Canvas.renderMode = RenderMode.ScreenSpaceCamera;
         Canfetti.SetActive(true);
+    }
+    void UnlockLevels() 
+    {
+        if (PlayerPrefs.GetInt("UnlockLevel") <= GameManager.Instance.LevelNo && PlayerPrefs.GetInt("UnlockLevel") < 6)
+        {
+            Debug.Log("here i am addding one into it");
+            PlayerPrefs.SetInt("UnlockLevel", PlayerPrefs.GetInt("UnlockLevel") +1);
+        }
     }
     //appList[index].GetComponent<LinkingRelation>().OnLeft(index);
     public void ScoreByName(int index,List<GameObject> appList)
@@ -1056,7 +1088,6 @@ public class GameHandler : MonoBehaviour
     #endregion
     public void ActivateTriggers(GameObject Obj) 
     {
-        Debug.Log("activating Triggers");
         Obj.GetComponent<Collider2D>().enabled = true;
         Collider2D[] Col = Obj.GetComponentsInChildren<Collider2D>();
         foreach (Collider2D c in Col) 
@@ -1134,5 +1165,28 @@ public class GameHandler : MonoBehaviour
         yield return new WaitForSeconds(1);
         timer++;
     }
-    
+    public void StartShaking()
+    {
+        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.GetComponent<AppAttriutes>().name + " Object");
+        for (int i= 0; i < Apps.Count;i++)
+        {
+           // if (!Apps[i].gameObject == DraggedObject) 
+            {
+                Apps[i].GetComponent<Animator>().enabled = true;
+            }
+        }
+        DraggedObject.GetComponent<Animator>().enabled = false;
+    }
+    public void StopShaking()
+    {
+        for (int i = 0; i < Apps.Count; i++)
+        {
+            {
+                Apps[i].GetComponent<Animator>().enabled = false;
+              Apps[i].transform.eulerAngles = new Vector3(0,0,0);
+            }
+        }
+    }
+
 }

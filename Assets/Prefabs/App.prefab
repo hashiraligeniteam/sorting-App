@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 4998178678826769018}
   - component: {fileID: 4998178678826769017}
   - component: {fileID: 2706429491218880227}
+  - component: {fileID: 352430723674691892}
   m_Layer: 5
   m_Name: App
   m_TagString: Untagged
@@ -909,6 +910,25 @@ MonoBehaviour:
   - {fileID: 7065162272311943823}
   - {fileID: 7723892561544845332}
   CompleteImageColor: {r: 0.061076403, g: 1, b: 0, a: 1}
+--- !u!95 &352430723674691892
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998178678826768961}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d72035cfe034894a8208d3707f6ce48, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5094917026219364331
 GameObject:
   m_ObjectHideFlags: 0

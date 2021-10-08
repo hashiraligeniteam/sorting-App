@@ -32,14 +32,15 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
             transform.position = Input.mousePosition - diffPosition;
             Drag = true;
             Moving = true;
-            GameHandler.Instance.DraggedObject = this.gameObject;
-       //     if (GetComponent<AppAttriutes>())
-       //{
-       //     GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
-       //     GetComponent<AppAttriutes>().HighLighter.SetActive(true);
-       //    GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
-       //     //= GetComponent<AppAttriutes>().MainSPrite;
-       // }
+           
+           
+            //     if (GetComponent<AppAttriutes>())
+            //{
+            //     GetComponent<AppAttriutes>().HighLighter.GetComponent<Image>().sprite = GetComponent<AppAttriutes>().AppSprite;
+            //     GetComponent<AppAttriutes>().HighLighter.SetActive(true);
+            //    GetComponent<Image>().sprite = GetComponent<AppAttriutes>().HighliterSprite;
+            //     //= GetComponent<AppAttriutes>().MainSPrite;
+            // }
         }
 
         //Debug.Log(Input.mousePosition);
@@ -59,9 +60,11 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        GameHandler.Instance.DraggedObject = this.gameObject;
         GameHandler.Instance.OpenFolderRef.GetComponent<GridLayoutGroup>().enabled = false;
         GameHandler.Instance.AppsMainParent.GetComponent<GridLayoutGroup>().enabled = false;
-
+        Debug.Log("hereeeeeeeeeeeeeee I called");
+       
         //if (GetComponent<AppAttriutes>())
         //{
         //    //GetComponent<AppAttriutes>().HighLighter.gameObject.GetComponent<Image>().sprite = null;
@@ -79,15 +82,15 @@ public class UIDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDown
             startPosition = transform.position;
             diffPosition = Input.mousePosition - startPosition;
             EventSystem.current.SetSelectedGameObject(gameObject);
-
             GameHandler.Instance.finalAppPosition = transform.localPosition;
-
+            GameHandler.Instance.StartShaking();
         }
        
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-       
+        GameHandler.Instance.StopShaking();
+       // StopShaking();
         //if (!IsEmpty)
         {
             GameHandler.Instance.StartCoroutine(GameHandler.Instance.DestroyingObjects(GetComponent<GraphicRaycaster>(), GetComponent<Canvas>()));

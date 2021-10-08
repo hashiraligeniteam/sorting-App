@@ -46,6 +46,13 @@ public class SideTrigger : MonoBehaviour
         if ((GetComponentInParent<UIDrag>().triggerEnteredOnce == true) &&
            (GetComponentInParent<UIDrag>().triggerEnteredTwice == true))
         {
+            if (GameHandler.Instance.SwapableObject)
+            {
+                if (GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite)
+                    GameHandler.Instance.SwapableObject.GetComponent<Image>().sprite = GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite;
+
+                GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+            }
             GameHandler.Instance.SwapableObject = transform.parent.gameObject;
             return;
         }
@@ -58,6 +65,7 @@ public class SideTrigger : MonoBehaviour
                 {
                   //  if (GameHandler.Instance.InsideFolderApps[indexNumber-1].GetComponent<UIDrag>().triggerEnteredTwice)
                     {
+                        GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.SetActive(false);
                         GameHandler.Instance.SwapableObject = GameHandler.Instance.InsideFolderApps[indexNumber-1].gameObject;
                         return;
                     }
@@ -70,6 +78,13 @@ public class SideTrigger : MonoBehaviour
                 {
                  //   if (GameHandler.Instance.Apps[indexNumber-1].GetComponent<UIDrag>().triggerEnteredTwice)
                     {
+                        if (GameHandler.Instance.SwapableObject)
+                        {
+                            if (GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite)
+                                GameHandler.Instance.SwapableObject.GetComponent<Image>().sprite = GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite;
+
+                            GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+                        }
                         GameHandler.Instance.SwapableObject = GameHandler.Instance.Apps[indexNumber-1].gameObject;
                         return;
                     }
@@ -97,6 +112,13 @@ public class SideTrigger : MonoBehaviour
                 {
                     //if (GameHandler.Instance.Apps[indexNumber].GetComponent<UIDrag>().triggerEnteredTwice)
                     {
+                        if (GameHandler.Instance.SwapableObject)
+                        {
+                            if (GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite)
+                                GameHandler.Instance.SwapableObject.GetComponent<Image>().sprite = GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().AppSprite;
+
+                            GameHandler.Instance.SwapableObject.GetComponent<AppAttriutes>().HighLighter.SetActive(false);
+                        }
                         GameHandler.Instance.SwapableObject = GameHandler.Instance.Apps[indexNumber].gameObject;
                         return;
                     }
@@ -147,5 +169,6 @@ public class SideTrigger : MonoBehaviour
             GetComponentInParent<UIDrag>().triggerEnteredTwice = false;
         }
     }
+   
 
 }
